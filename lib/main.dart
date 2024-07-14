@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_mobile_app_flutter/pages/watchlist/watchlist_page.dart';
+import 'package:movies_mobile_app_flutter/presentation/pages/watchlist/watchlist_page.dart';
 
 void main() {
   runApp(const MyApp());

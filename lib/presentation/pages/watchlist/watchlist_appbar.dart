@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_mobile_app_flutter/components/generic_icon.dart';
+
+import '../../components/generic_icon.dart';
 
 /// AppBar
 class WatchlistAppBar extends StatelessWidget implements PreferredSizeWidget {

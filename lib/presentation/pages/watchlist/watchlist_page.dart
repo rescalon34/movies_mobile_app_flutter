@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies_mobile_app_flutter/domain/repository/watchlist_repository.dart';
 
+import '../../../domain/model/movie.dart';
 import '../../components/movie_item.dart';
-import '../../domain/model/movie.dart';
 import 'watchlist_appbar.dart';
 
 class WatchlistPage extends StatefulWidget {
