@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies_mobile_app_flutter/domain/repository/WatchlistRepository.dart';
+import 'package:movies_mobile_app_flutter/domain/repository/watchlist_repository.dart';
 
-import '../../components/MovieItem.dart';
-import '../../domain/model/Movie.dart';
+import '../../components/movie_item.dart';
+import '../../domain/model/movie.dart';
 import 'watchlist_appbar.dart';
 
 class WatchlistPage extends StatefulWidget {
@@ -107,7 +107,7 @@ class _WatchlistPageState extends State<WatchlistPage> {
               return MovieItem(
                 movie: movies[index],
                 onTapItem: () {
-                  print("movie item tapped: ${movies[index].title}");
+                  debugPrint("movie item tapped: ${movies[index].title}");
                 },
               );
             },

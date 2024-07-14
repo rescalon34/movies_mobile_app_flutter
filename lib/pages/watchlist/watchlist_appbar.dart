@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_mobile_app_flutter/components/GenericIcon.dart';
+import 'package:movies_mobile_app_flutter/components/generic_icon.dart';
 
 /// AppBar
 class WatchlistAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -27,7 +27,7 @@ class WatchlistAppBar extends StatelessWidget implements PreferredSizeWidget {
                 icon: Icons.cast,
                 color: Colors.white,
                 onTapIcon: () {
-                  print("tapping on cast icon");
+                  debugPrint("tapping on cast icon");
                 },
               ),
               const SizedBox(
@@ -37,7 +37,7 @@ class WatchlistAppBar extends StatelessWidget implements PreferredSizeWidget {
                 icon: Icons.share,
                 color: Colors.white,
                 onTapIcon: () {
-                  print("tapping on share icon");
+                  debugPrint("tapping on share icon");
                 },
               ),
             ],

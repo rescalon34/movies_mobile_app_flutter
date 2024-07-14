@@ -1,5 +1,5 @@
 
-import '../model/Movie.dart';
+import '../model/movie.dart';
 
 class WatchlistRepository {
 
