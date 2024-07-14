@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_mobile_app_flutter/pages/home/HomePage.dart';
-import 'package:movies_mobile_app_flutter/pages/watchlist/WatchlistPage.dart';
+import 'package:movies_mobile_app_flutter/pages/watchlist/watchlist_page.dart';
 
 void main() {
   runApp(const MyApp());
