@@ -21,7 +21,7 @@ class WatchlistBloc extends Bloc<WatchlistEvent, WatchlistState> {
     Emitter<WatchlistState> emit,
   ) async {
     final dataState = await _getWatchlistUseCase();
-
+    debugPrint("trying to fetch data...");
     if (dataState is DataSuccess) {
       debugPrint("DataSuccess data: ${dataState.data}");
       emit(OnWatchlistFetched(dataState.data ?? <Movie>[]));

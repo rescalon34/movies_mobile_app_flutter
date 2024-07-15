@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_event.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';
+import 'package:movies_mobile_app_flutter/presentation/components/error_message_view.dart';
 
 import '../../../core/di/service_locator.dart';
 import '../../../domain/model/movie.dart';
@@ -18,28 +19,39 @@ class WatchlistPage extends StatelessWidget {
       create: (context) => sl()..add(const GetWatchlist()),
       child: Scaffold(
         appBar: const WatchlistAppBar(),
-        body: BlocBuilder<WatchlistBloc, WatchlistState>(builder: (_, state) {
-          return _buildWatchlistBody(state);
-        }),
+        body: BlocBuilder<WatchlistBloc, WatchlistState>(
+          builder: (context, state) {
+            if (state is OnWatchlistError) {
+              return ErrorMessageView(
+                onRetry: () {
+                  context.read<WatchlistBloc>().add(const GetWatchlist());
+                },
+              );
+            }
+            return _buildWatchlistBody(state);
+          },
+        ),
       ),
     );
   }
 
   /// Watchlist body content
   Widget _buildWatchlistBody(WatchlistState state) {
-    return Stack(children: [
-      SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildMoviesStoriesSection(state.movies ?? []),
-            _buildWatchlistSection(state.movies ?? []),
-          ],
+    return Stack(
+      children: [
+        SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildMoviesStoriesSection(state.movies ?? []),
+              _buildWatchlistSection(state.movies ?? []),
+            ],
+          ),
         ),
-      ),
-      if (state.isLoading == true)
-        const Center(child: CircularProgressIndicator())
-    ]);
+        if (state.isLoading == true)
+          const Center(child: CircularProgressIndicator())
+      ],
+    );
   }
 
   /// Movies Stories content

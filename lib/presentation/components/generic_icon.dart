@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class GenericIcon extends StatelessWidget {
+  final IconData icon;
+  final Color color;
+  final GestureTapCallback? onTapIcon;
 
   const GenericIcon({
     super.key,
@@ -8,10 +11,6 @@ class GenericIcon extends StatelessWidget {
     required this.color,
     this.onTapIcon,
   });
-
-  final IconData icon;
-  final Color color;
-  final GestureTapCallback? onTapIcon;
 
   @override
   Widget build(BuildContext context) {
