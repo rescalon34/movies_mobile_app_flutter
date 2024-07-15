@@ -1,49 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:movies_mobile_app_flutter/domain/repository/watchlist_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_bloc.dart';
+import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_event.dart';
+import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';
 
+import '../../../core/di/service_locator.dart';
 import '../../../domain/model/movie.dart';
 import '../../components/movie_item.dart';
 import 'watchlist_appbar.dart';
 
-class WatchlistPage extends StatefulWidget {
+class WatchlistPage extends StatelessWidget {
   const WatchlistPage({super.key});
 
   @override
-  State<WatchlistPage> createState() => _WatchlistPageState();
-}
-
-/// Screen state
-class _WatchlistPageState extends State<WatchlistPage> {
-  late WatchlistRepository watchlistRepository;
-  late List<Movie> movies;
-
-  @override
-  void initState() {
-    // TODO, not the right place to call it, but it works for now just to fetch mock data.
-    watchlistRepository = WatchlistRepository();
-    movies = watchlistRepository.getWatchlistMovies();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const WatchlistAppBar(),
-      body: _buildMainWatchlistBody(movies),
-    );
-  }
-
-  /// Main Watchlist screen content
-  Widget _buildMainWatchlistBody(List<Movie> movies) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildMoviesStoriesSection(movies),
-          _buildWatchlistSection(movies),
-        ],
+    return BlocProvider<WatchlistBloc>(
+      create: (context) => sl()..add(const GetWatchlist()),
+      child: Scaffold(
+        appBar: const WatchlistAppBar(),
+        body: BlocBuilder<WatchlistBloc, WatchlistState>(builder: (_, state) {
+          return _buildWatchlistBody(state);
+        }),
       ),
     );
+  }
+
+  /// Watchlist body content
+  Widget _buildWatchlistBody(WatchlistState state) {
+    return Stack(children: [
+      SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildMoviesStoriesSection(state.movies ?? []),
+            _buildWatchlistSection(state.movies ?? []),
+          ],
+        ),
+      ),
+      if (state.isLoading == true)
+        const Center(child: CircularProgressIndicator())
+    ]);
   }
 
   /// Movies Stories content

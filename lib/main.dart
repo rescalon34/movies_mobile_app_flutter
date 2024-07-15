@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movies_mobile_app_flutter/core/di/service_locator.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/watchlist/watchlist_page.dart';
 
-void main() {
+void main() async {
+  await initDependencies();
   runApp(const MyApp());
 }
 
