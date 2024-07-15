@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_mobile_app_flutter/presentation/components/elevated_large_button.dart';
 
 class ErrorMessageView extends StatelessWidget {
   final VoidCallback onRetry;
@@ -52,27 +53,14 @@ class ErrorMessageView extends StatelessWidget {
             const SizedBox(height: 36),
             SizedBox(
               width: double.infinity,
-              child: _buildRetryButton(),
+              child: ElevatedLargeButton(
+                text: "Retry",
+                onClick: onRetry,
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildRetryButton() {
-    final ButtonStyle style = ElevatedButton.styleFrom(
-      textStyle: const TextStyle(
-        fontSize: 16,
-      ),
-      backgroundColor: Colors.deepPurpleAccent,
-      foregroundColor: Colors.white,
-    );
-
-    return ElevatedButton(
-      style: style,
-      onPressed: onRetry,
-      child: const Text('Retry'),
     );
   }
 }
