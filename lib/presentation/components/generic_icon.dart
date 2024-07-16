@@ -16,9 +16,12 @@ class GenericIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: onTapIcon,
-        child: Icon(
-          icon,
-          color: color,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            icon,
+            color: color,
+          ),
         ));
   }
 }
