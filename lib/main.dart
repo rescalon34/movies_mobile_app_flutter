@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_mobile_app_flutter/core/di/service_locator.dart';
-import 'package:movies_mobile_app_flutter/presentation/pages/watchlist/watchlist_page.dart';
+import 'package:movies_mobile_app_flutter/presentation/main/main_page_content.dart';
 
 void main() async {
   await initDependencies();
@@ -14,13 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Home',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-        useMaterial3: true,
-      ),
-      home: const WatchlistPage(),
-    );
+        title: 'Home',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+          useMaterial3: true,
+        ),
+        home: const MainPageContent());
   }
 }
