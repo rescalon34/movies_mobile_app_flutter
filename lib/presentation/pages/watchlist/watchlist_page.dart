@@ -53,7 +53,7 @@ class WatchlistPage extends StatelessWidget {
                 },
               ),
               GenericIcon(
-                icon: Icons.share,
+                icon: Icons.adaptive.share,
                 color: Colors.white,
                 onTapIcon: () {
                   debugPrint("tapping on share icon");
@@ -80,7 +80,7 @@ class WatchlistPage extends StatelessWidget {
           ),
         ),
         if (state.isLoading == true)
-          const Center(child: CircularProgressIndicator())
+          const Center(child: CircularProgressIndicator.adaptive())
       ],
     );
   }
