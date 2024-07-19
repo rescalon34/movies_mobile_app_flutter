@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_mobile_app_flutter/core/di/service_locator.dart';
+import 'package:movies_mobile_app_flutter/core/theme/movies_app_theme.dart';
 import 'package:movies_mobile_app_flutter/presentation/main/main_page_content.dart';
 
 void main() async {
@@ -16,13 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Home',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.indigo,
-            brightness: Brightness.dark,
-          ),
-          useMaterial3: true,
-        ),
+        theme: MoviesAppTheme.light,
+        darkTheme: MoviesAppTheme.dark,
         home: const MainPageContent());
   }
 }

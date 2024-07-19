@@ -15,6 +15,8 @@ class MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle? style = Theme.of(context).textTheme.labelMedium;
+    debugPrint('TextStyle: ${style.toString()}');
     return GestureDetector(
       onTap: onTapItem,
       child: Column(
@@ -44,15 +46,14 @@ class MovieItem extends StatelessWidget {
                     ),
             ),
           ),
-          Text(
-            movie.title ?? "",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface,
-              overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Text(
+              movie.title ?? "",
+              style: Theme.of(context).textTheme.labelMedium,
+              textAlign: TextAlign.center,
+              maxLines: 1,
             ),
-            textAlign: TextAlign.center,
-            maxLines: 1,
           )
         ],
       ),
