@@ -13,43 +13,48 @@ class ErrorMessageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(24),
-      child: _buildContent(),
+      child: _buildContent(context),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildErrorContainer(),
+          _buildErrorContainer(context),
         ],
       ),
     );
   }
 
-  Widget _buildErrorContainer() {
-    return Container(
-      color: Colors.grey.shade100,
+  Widget _buildErrorContainer(BuildContext context) {
+    return Card(
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            const Icon(
+            Icon(
               Icons.error_outline_sharp,
-              color: Colors.red,
+              color: Theme.of(context).colorScheme.error,
               size: 60,
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               "Ops! an error has occurred",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             const SizedBox(height: 8),
-            const Text("Please try again"),
+            Text(
+              "Please try again",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
             const SizedBox(height: 36),
             SizedBox(
               width: double.infinity,

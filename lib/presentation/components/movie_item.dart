@@ -23,7 +23,7 @@ class MovieItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
             child: Container(
-              color: Colors.grey,
+              color: Theme.of(context).colorScheme.surfaceBright,
               height: 260,
               child: movie.imageUrl != null
                   ? Image.network(
@@ -46,8 +46,8 @@ class MovieItem extends StatelessWidget {
           ),
           Text(
             movie.title ?? "",
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
               overflow: TextOverflow.ellipsis,
               fontWeight: FontWeight.bold,
             ),

@@ -19,7 +19,7 @@ class WatchlistPage extends StatelessWidget {
     return BlocProvider<WatchlistBloc>(
       create: (context) => sl()..add(const GetWatchlist()),
       child: Scaffold(
-        appBar: _buildWatchlistAppBar(),
+        appBar: _buildWatchlistAppBar(context),
         body: BlocBuilder<WatchlistBloc, WatchlistState>(
           builder: (context, state) {
             if (state is OnWatchlistError) {
@@ -36,7 +36,7 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
-  CustomAppBar _buildWatchlistAppBar() {
+  CustomAppBar _buildWatchlistAppBar(context) {
     return CustomAppBar(
       title: "Watchlist",
       centerTitle: true,
@@ -47,14 +47,14 @@ class WatchlistPage extends StatelessWidget {
             children: [
               GenericIcon(
                 icon: Icons.cast,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
                 onTapIcon: () {
                   debugPrint("tapping on cast icon");
                 },
               ),
               GenericIcon(
                 icon: Icons.adaptive.share,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
                 onTapIcon: () {
                   debugPrint("tapping on share icon");
                 },

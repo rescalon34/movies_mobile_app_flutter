@@ -16,8 +16,8 @@ class ElevatedLargeButton extends StatelessWidget {
         textStyle: const TextStyle(
           fontSize: 16,
         ),
-        backgroundColor: Colors.deepPurpleAccent,
-        foregroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(8),

@@ -35,7 +35,7 @@ class _MainPageContentState extends State<MainPageContent> {
       },
       destinations: BottomNavigationItems.navigationItems
           .map((entry) => NavigationDestination(
-                icon: Icon(entry.cupertino),
+                icon: Icon(entry.material),
                 label: entry.label,
               ))
           .toList(),
