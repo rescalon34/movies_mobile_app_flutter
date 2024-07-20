@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../domain/model/movie.dart';
 
@@ -46,14 +47,12 @@ class MovieItem extends StatelessWidget {
                     ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: Text(
-              movie.title ?? "",
-              style: Theme.of(context).textTheme.labelMedium,
-              textAlign: TextAlign.center,
-              maxLines: 1,
-            ),
+          const Gap(4),
+          Text(
+            movie.title ?? "",
+            style: Theme.of(context).textTheme.labelMedium,
+            textAlign: TextAlign.center,
+            maxLines: 1,
           )
         ],
       ),
