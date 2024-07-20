@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies_mobile_app_flutter/core/di/service_locator.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/main_routes.dart';
 import 'package:movies_mobile_app_flutter/core/theme/movies_app_theme.dart';
-import 'package:movies_mobile_app_flutter/presentation/main/main_page_content.dart';
 
 void main() async {
   await initDependencies();
@@ -14,11 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Home',
-        debugShowCheckedModeBanner: false,
-        theme: MoviesAppTheme.light,
-        darkTheme: MoviesAppTheme.dark,
-        home: const MainPageContent());
+    return MaterialApp.router(
+      title: 'Home',
+      debugShowCheckedModeBanner: false,
+      theme: MoviesAppTheme.light,
+      darkTheme: MoviesAppTheme.dark,
+      routerConfig: MainRoutes().mainGoRouter,
+    );
   }
 }

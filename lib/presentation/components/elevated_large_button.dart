@@ -22,7 +22,8 @@ class ElevatedLargeButton extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
-        ));
+        )
+    );
 
     return ElevatedButton(
       style: style,
