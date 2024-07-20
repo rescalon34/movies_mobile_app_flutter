@@ -19,7 +19,7 @@ class WatchlistPage extends StatelessWidget {
     return BlocProvider<WatchlistBloc>(
       create: (context) => sl()..add(const GetWatchlist()),
       child: Scaffold(
-        appBar: _buildWatchlistAppBar(),
+        appBar: _buildWatchlistAppBar(context),
         body: BlocBuilder<WatchlistBloc, WatchlistState>(
           builder: (context, state) {
             if (state is OnWatchlistError) {
@@ -29,14 +29,14 @@ class WatchlistPage extends StatelessWidget {
                 },
               );
             }
-            return _buildWatchlistBody(state);
+            return _buildWatchlistBody(context, state);
           },
         ),
       ),
     );
   }
 
-  CustomAppBar _buildWatchlistAppBar() {
+  CustomAppBar _buildWatchlistAppBar(BuildContext context) {
     return CustomAppBar(
       title: "Watchlist",
       centerTitle: true,
@@ -47,14 +47,14 @@ class WatchlistPage extends StatelessWidget {
             children: [
               GenericIcon(
                 icon: Icons.cast,
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
                 onTapIcon: () {
                   debugPrint("tapping on cast icon");
                 },
               ),
               GenericIcon(
-                icon: Icons.share,
-                color: Colors.white,
+                icon: Icons.adaptive.share,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
                 onTapIcon: () {
                   debugPrint("tapping on share icon");
                 },
@@ -67,32 +67,41 @@ class WatchlistPage extends StatelessWidget {
   }
 
   /// Watchlist body content
-  Widget _buildWatchlistBody(WatchlistState state) {
+  Widget _buildWatchlistBody(
+    BuildContext context,
+    WatchlistState state,
+  ) {
     return Stack(
       children: [
         SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildMoviesStoriesSection(state.movies ?? []),
-              _buildWatchlistSection(state.movies ?? []),
+              _buildMoviesStoriesSection(context, state.movies ?? []),
+              _buildWatchlistSection(context, state.movies ?? []),
             ],
           ),
         ),
         if (state.isLoading == true)
-          const Center(child: CircularProgressIndicator())
+          const Center(child: CircularProgressIndicator.adaptive())
       ],
     );
   }
 
   /// Movies Stories content
-  Widget _buildMoviesStoriesSection(List<Movie> movies) {
+  Widget _buildMoviesStoriesSection(
+    BuildContext context,
+    List<Movie> movies,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 8.0, top: 8.0),
-          child: Text("Stories"),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+          child: Text(
+            "Stories",
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
         ),
         SizedBox(
           height: 100,
@@ -122,15 +131,18 @@ class WatchlistPage extends StatelessWidget {
   }
 
   /// Watchlist content
-  Widget _buildWatchlistSection(List<Movie> movies) {
+  Widget _buildWatchlistSection(BuildContext context, List<Movie> movies) {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 8, bottom: 8),
-            child: Text("My movies"),
+          Padding(
+            padding: const EdgeInsets.only(top: 8, bottom: 8),
+            child: Text(
+              "My movies",
+              style: Theme.of(context).textTheme.titleSmall,
+            ),
           ),
           GridView.builder(
             shrinkWrap: true,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../domain/model/movie.dart';
 
@@ -15,6 +16,8 @@ class MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle? style = Theme.of(context).textTheme.labelMedium;
+    debugPrint('TextStyle: ${style.toString()}');
     return GestureDetector(
       onTap: onTapItem,
       child: Column(
@@ -23,7 +26,7 @@ class MovieItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
             child: Container(
-              color: Colors.grey,
+              color: Theme.of(context).colorScheme.surfaceBright,
               height: 260,
               child: movie.imageUrl != null
                   ? Image.network(
@@ -44,13 +47,10 @@ class MovieItem extends StatelessWidget {
                     ),
             ),
           ),
+          const Gap(4),
           Text(
             movie.title ?? "",
-            style: const TextStyle(
-              color: Colors.black,
-              overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.labelMedium,
             textAlign: TextAlign.center,
             maxLines: 1,
           )

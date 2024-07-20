@@ -54,6 +54,9 @@ dependencies:
   # Hooks
   flutter_hooks: ^0.20.5
 
+  # Gap - To add spacing between items
+  gap: ^3.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -108,3 +111,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat-ExtraLight.ttf
+          weight: 200
+        - asset: fonts/Montserrat-Regular.ttf
+          weight: 400
+        - asset: fonts/Montserrat-SemiBold.ttf
+          weight: 600
