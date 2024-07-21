@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../components/custom_appbar.dart';
 
@@ -20,10 +21,11 @@ class MovieDetailsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
-          Center(child: Column(
+          Center(
+              child: Column(
             children: [
               Text("movieName: $movieName"),
-              Text("releaseDate: $releaseDate"),
+              Text("releaseDate: $releaseDate")
             ],
           )),
         ],

@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/main_branches/download_routes.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/main_branches/home_routes.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/main_branches/profile_routes.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/main_branches/search_routes.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/main_branches/watchlist_routes.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/branches/download_branch.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/branches/home_branch.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/branches/profile_branch.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/branches/search_branch.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/branches/watchlist_branch.dart';
 
 import '../../presentation/main/bottom_navigation/main_scaffold_with_nav_bar.dart';
-import 'navigation_routes.dart';
+import 'app_routes.dart';
 
 class MainRoutes {
   final GlobalKey<NavigatorState> _rootNavigatorKey;
@@ -16,7 +16,7 @@ class MainRoutes {
 
   GoRouter get mainGoRouter {
     return GoRouter(
-      initialLocation: NavigationRoutes.homePagePath,
+      initialLocation: AppRoutes.homePagePath,
       navigatorKey: _rootNavigatorKey,
       routes: [
         StatefulShellRoute.indexedStack(

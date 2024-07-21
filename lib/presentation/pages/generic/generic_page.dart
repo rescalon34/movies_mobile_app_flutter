@@ -1,15 +1,37 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:movies_mobile_app_flutter/presentation/components/custom_appbar.dart';
+
+import '../../components/elevated_large_button.dart';
 
 class GenericPage extends StatelessWidget {
   final String screenTitle;
+  final VoidCallback onButtonClick;
 
   const GenericPage({
     super.key,
     this.screenTitle = "",
+    required this.onButtonClick,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(screenTitle));
+    return Scaffold(
+      appBar: CustomAppBar(title: screenTitle,),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Text(screenTitle),
+          Padding(
+            padding: const EdgeInsets.all(32),
+            child: ElevatedLargeButton(
+              text: "Next",
+              onClick: onButtonClick,
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

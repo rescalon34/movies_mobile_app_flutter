@@ -25,10 +25,13 @@ class ElevatedLargeButton extends StatelessWidget {
         )
     );
 
-    return ElevatedButton(
-      style: style,
-      onPressed: onClick,
-      child: Text(text),
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: style,
+        onPressed: onClick,
+        child: Text(text),
+      ),
     );
   }
 }
