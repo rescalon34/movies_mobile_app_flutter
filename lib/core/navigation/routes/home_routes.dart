@@ -13,9 +13,15 @@ List<GoRoute> getHomeRoutes() {
           const NoTransitionPage(child: HomePage()),
     ),
     GoRoute(
-      path: AppRoutes.movieDetailsPage.path,
-      name: AppRoutes.movieDetailsPage.name,
-      builder: (context, state) => const MovieDetailsPage(),
-    )
+        path: AppRoutes.movieDetailsPage.path,
+        name: AppRoutes.movieDetailsPage.name,
+        builder: (context, state) {
+          String movieName = state.uri.queryParameters['movieName'] ?? "";
+          String releaseDate = state.uri.queryParameters['releaseDate'] ?? "";
+          return MovieDetailsPage(
+            movieName: movieName,
+            releaseDate: releaseDate,
+          );
+        })
   ];
 }
