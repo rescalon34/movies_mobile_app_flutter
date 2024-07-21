@@ -28,12 +28,12 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(32),
             child: ElevatedLargeButton(
               text: "Go to Details",
-              onClick: () => context.push(
-                AppRoutes.movieDetailsPage.path,
-                // pathParameters: {
-                //   "movieName": testMovieName,
-                //   "releaseDate": releaseDate
-                // },
+              onClick: () => context.pushNamed(
+                AppRoutes.movieDetailsPage.name,
+                queryParameters: {
+                  "movieName": testMovieName,
+                  "releaseDate": releaseDate
+                },
               ),
             ),
           )

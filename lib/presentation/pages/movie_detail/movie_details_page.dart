@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/navigation/app_routes.dart';
 import '../../components/custom_appbar.dart';
+import '../../components/elevated_large_button.dart';
 
 class MovieDetailsPage extends StatelessWidget {
   final String? movieName;
@@ -25,7 +27,14 @@ class MovieDetailsPage extends StatelessWidget {
               child: Column(
             children: [
               Text("movieName: $movieName"),
-              Text("releaseDate: $releaseDate")
+              Text("releaseDate: $releaseDate"),
+              Padding(
+                padding: const EdgeInsets.all(32),
+                child: ElevatedLargeButton(
+                  text: "Go to settings",
+                  onClick: () => context.pushNamed(AppRoutes.settingsBPage),
+                ),
+              )
             ],
           )),
         ],
