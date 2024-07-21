@@ -11,7 +11,7 @@ class SettingsCPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GenericPage(
       screenTitle: "Settings C",
-      onButtonClick: () => context.push(AppRoutes.settingsDPagePath),
+      onButtonClick: () => context.pushNamed(AppRoutes.settingsDPage),
     );
   }
 }

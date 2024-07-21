@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/app_routes.dart';
+import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/elevated_large_button.dart';
 
 import '../../components/custom_appbar.dart';
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
             child: ElevatedLargeButton(
               text: "Go to Details",
               onClick: () => context.push(
-                AppRoutes.movieDetailsPagePath,
+                AppRoutes.movieDetailsPage.path,
                 // pathParameters: {
                 //   "movieName": testMovieName,
                 //   "releaseDate": releaseDate
