@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/domain/model/movie.dart';
@@ -5,6 +6,8 @@ import 'package:movies_mobile_app_flutter/domain/model/movie.dart';
 import '../../../presentation/pages/home/home_page.dart';
 import '../../../presentation/pages/movie_detail/movie_details_page.dart';
 import '../app_routes.dart';
+
+part 'home_routes.g.dart';
 
 List<GoRoute> getHomeRoutes() {
   return [
@@ -28,4 +31,27 @@ List<GoRoute> getHomeRoutes() {
       },
     )
   ];
+}
+
+@TypedGoRoute<HomeRoute>(
+    path: "/${AppRoutes.homePage}",
+    routes: [TypedGoRoute<MovieDetailsRoute>(path: AppRoutes.movieDetailsPage)])
+class HomeRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const HomePage();
+  }
+}
+
+class MovieDetailsRoute extends GoRouteData {
+  final String? $extra;
+
+  const MovieDetailsRoute({this.$extra});
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return MovieDetailsPage(
+      $extraData: $extra,
+    );
+  }
 }

@@ -9,7 +9,9 @@ final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'Home');
 
 StatefulShellBranch getHomeBranch() {
   return StatefulShellBranch(
-      initialLocation: AppRoutes.homePage.path,
-      navigatorKey: _homeNavigatorKey,
-      routes: getHomeRoutes());
+    initialLocation: AppRoutes.homePage.path,
+    navigatorKey: _homeNavigatorKey,
+    // routes: getHomeRoutes());
+    routes: $appRoutes,
+  );
 }
