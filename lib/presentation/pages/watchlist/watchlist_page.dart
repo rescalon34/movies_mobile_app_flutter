@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_event.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';
@@ -7,6 +9,7 @@ import 'package:movies_mobile_app_flutter/presentation/components/custom_appbar.
 import 'package:movies_mobile_app_flutter/presentation/components/error_message_view.dart';
 
 import '../../../core/di/service_locator.dart';
+import '../../../core/navigation/app_routes.dart';
 import '../../../domain/model/movie.dart';
 import '../../components/generic_icon.dart';
 import '../../components/movie_item.dart';
@@ -158,7 +161,10 @@ class WatchlistPage extends StatelessWidget {
               return MovieItem(
                 movie: movies[index],
                 onTapItem: () {
-                  debugPrint("movie item tapped: ${movies[index].title}");
+                  context.pushNamed(
+                    AppRoutes.movieDetailsPage.name,
+                    extra: movies[index],
+                  );
                 },
               );
             },
