@@ -33,24 +33,38 @@ List<GoRoute> getHomeRoutes() {
   ];
 }
 
-@TypedGoRoute<HomeRoute>(
-    path: "/${AppRoutes.homePage}",
-    routes: [TypedGoRoute<MovieDetailsRoute>(path: AppRoutes.movieDetailsPage)])
-class HomeRoute extends GoRouteData {
+@TypedGoRoute<HomePageRoute>(
+  path: "/${AppRoutes.homePage}",
+  routes: [
+    TypedGoRoute<MovieDetailsPageRoute>(
+      path: AppRoutes.movieDetailsPage,
+    )
+  ],
+)
+
+class HomePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const HomePage();
   }
 }
 
-class MovieDetailsRoute extends GoRouteData {
+class MovieDetailsPageRoute extends GoRouteData {
+  final String? movieName;
+  final String? releaseDate;
   final String? $extra;
 
-  const MovieDetailsRoute({this.$extra});
+  const MovieDetailsPageRoute({
+    this.movieName,
+    this.releaseDate,
+    this.$extra,
+  });
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return MovieDetailsPage(
+      movieName: movieName,
+      releaseDate: releaseDate,
       $extraData: $extra,
     );
   }

@@ -20,7 +20,6 @@ class MovieDetailsPage extends StatelessWidget {
     this.$extraData
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +38,8 @@ class MovieDetailsPage extends StatelessWidget {
                 height: 350,
               ) : Text("no movie"),
               Text("movieName: $movieName"),
-              Text($extraData.toString()),
               Text("releaseDate: $releaseDate"),
+              Text($extraData.toString()),
               Padding(
                 padding: const EdgeInsets.all(32),
                 child: ElevatedLargeButton(

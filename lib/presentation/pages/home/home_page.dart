@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/app_routes.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/home_routes.dart';
-import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
-import 'package:movies_mobile_app_flutter/domain/model/movie.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/elevated_large_button.dart';
 
 import '../../components/custom_appbar.dart';
@@ -14,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String testMovieName = "Inside Out 2";
+    const String movieName = "Inside Out 2";
     const String releaseDate = "Junio 17, 2024";
 
     return Scaffold(
@@ -37,7 +33,9 @@ class HomePage extends StatelessWidget {
               //     "releaseDate": releaseDate
               //   },
               // ),
-              onClick: () async => await const MovieDetailsRoute(
+              onClick: () => const MovieDetailsPageRoute(
+                movieName: movieName,
+                releaseDate: releaseDate,
                 $extra: "Movie name with extra",
               ).push(context),
             ),

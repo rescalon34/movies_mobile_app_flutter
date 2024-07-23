@@ -7,22 +7,22 @@ part of 'home_routes.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $homeRoute,
+      $homePageRoute,
     ];
 
-RouteBase get $homeRoute => GoRouteData.$route(
+RouteBase get $homePageRoute => GoRouteData.$route(
       path: '/home-page',
-      factory: $HomeRouteExtension._fromState,
+      factory: $HomePageRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
           path: 'movie-details-page',
-          factory: $MovieDetailsRouteExtension._fromState,
+          factory: $MovieDetailsPageRouteExtension._fromState,
         ),
       ],
     );
 
-extension $HomeRouteExtension on HomeRoute {
-  static HomeRoute _fromState(GoRouterState state) => HomeRoute();
+extension $HomePageRouteExtension on HomePageRoute {
+  static HomePageRoute _fromState(GoRouterState state) => HomePageRoute();
 
   String get location => GoRouteData.$location(
         '/home-page',
@@ -38,13 +38,20 @@ extension $HomeRouteExtension on HomeRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $MovieDetailsRouteExtension on MovieDetailsRoute {
-  static MovieDetailsRoute _fromState(GoRouterState state) => MovieDetailsRoute(
+extension $MovieDetailsPageRouteExtension on MovieDetailsPageRoute {
+  static MovieDetailsPageRoute _fromState(GoRouterState state) =>
+      MovieDetailsPageRoute(
+        movieName: state.uri.queryParameters['movie-name'],
+        releaseDate: state.uri.queryParameters['release-date'],
         $extra: state.extra as String?,
       );
 
   String get location => GoRouteData.$location(
         '/home-page/movie-details-page',
+        queryParams: {
+          if (movieName != null) 'movie-name': movieName,
+          if (releaseDate != null) 'release-date': releaseDate,
+        },
       );
 
   void go(BuildContext context) => context.go(location, extra: $extra);
