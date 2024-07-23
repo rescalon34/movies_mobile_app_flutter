@@ -12,13 +12,12 @@ class MovieDetailsPage extends StatelessWidget {
   final Movie? movie;
   final String? $extraData;
 
-  const MovieDetailsPage({
-    super.key,
-    this.movieName,
-    this.releaseDate,
-    this.movie,
-    this.$extraData
-  });
+  const MovieDetailsPage(
+      {super.key,
+      this.movieName,
+      this.releaseDate,
+      this.movie,
+      this.$extraData});
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +30,13 @@ class MovieDetailsPage extends StatelessWidget {
           Center(
               child: Column(
             children: [
-              movie?.imageUrl != null ?
-              Image.network(
-                movie?.imageUrl ?? "",
-                width: double.infinity,
-                height: 350,
-              ) : Text("no movie"),
+              movie?.imageUrl != null
+                  ? Image.network(
+                      movie?.imageUrl ?? "",
+                      width: double.infinity,
+                      height: 350,
+                    )
+                  : Text("no movie"),
               Text("movieName: $movieName"),
               Text("releaseDate: $releaseDate"),
               Text($extraData.toString()),
@@ -44,7 +44,7 @@ class MovieDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.all(32),
                 child: ElevatedLargeButton(
                   text: "Go to settings",
-                  onClick: () => context.pushNamed(AppRoutes.settingsBPage),
+                  onClick: () => context.push(AppRoutes.settingsBPagePath),
                 ),
               )
             ],

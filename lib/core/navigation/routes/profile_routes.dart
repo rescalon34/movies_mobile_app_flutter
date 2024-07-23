@@ -11,27 +11,27 @@ import '../app_routes.dart';
 List<GoRoute> getProfileRoutes() {
   return [
     GoRoute(
-      path: AppRoutes.profilePage.path,
+      path: AppRoutes.profilePagePath,
       builder: (context, state) => const ProfilePage(),
     ),
     GoRoute(
-      path: AppRoutes.settingsAPage.path,
-      name: AppRoutes.settingsAPage.name,
+      path: AppRoutes.settingsAPagePath,
+      name: AppRoutes.settingsAPagePath.name,
       builder: (context, state) => const SettingsAPage(),
     ),
     GoRoute(
-      path: AppRoutes.settingsBPage.path,
-      name: AppRoutes.settingsBPage.name,
+      path: AppRoutes.settingsBPagePath,
+      name: AppRoutes.settingsBPagePath.name,
       builder: (context, state) => const SettingsBPage(),
     ),
     GoRoute(
-      path: AppRoutes.settingsCPage.path,
-      name: AppRoutes.settingsCPage.name,
+      path: AppRoutes.settingsCPagePath,
+      name: AppRoutes.settingsCPagePath.name,
       builder: (context, state) => const SettingsCPage(),
     ),
     GoRoute(
-      path: AppRoutes.settingsDPage.path,
-      name: AppRoutes.settingsDPage.name,
+      path: AppRoutes.settingsDPagePath,
+      name: AppRoutes.settingsDPagePath.name,
       builder: (context, state) => const SettingsDPage(),
     )
   ];

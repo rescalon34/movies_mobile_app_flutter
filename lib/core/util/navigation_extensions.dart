@@ -23,5 +23,5 @@ extension NavigationExtensions on String? {
   /// static const homePage = "home-page";
   /// homePage.name => "home-page"
   /// ```
-  String get name => this ?? '';
+  String get name => this?.replaceAll("/", "") ?? '';
 }

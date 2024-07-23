@@ -1,17 +1,17 @@
 class AppRoutes {
-  // Bottom NavBar pages
-  static const homePage = "home-page";
-  static const searchPage = "search-page";
-  static const watchlistPage = "watchlist-page";
-  static const downloadPage = "download-page";
-  static const profilePage = "profile-page";
+  // Bottom NavBar pages paths
+  static const homePagePath = "/home-page";
+  static const searchPagePath = "/search-page";
+  static const watchlistPagePath = "/watchlist-page";
+  static const downloadPagePath = "/download-page";
+  static const profilePagePath = "/profile-page";
 
-  // Home Pages
-  static const movieDetailsPage = "movie-details-page";
+  // App pages paths
+  static const movieDetailsPagePath = "/movie-details-page";
 
-  // Settings Pages
-  static const settingsAPage = "settings-a-page";
-  static const settingsBPage = "settings-b-page";
-  static const settingsCPage = "settings-c-page";
-  static const settingsDPage = "settings-d-page";
+  // Settings Pages paths
+  static const settingsAPagePath = "/settings-a-page";
+  static const settingsBPagePath = "/settings-b-page";
+  static const settingsCPagePath = "/settings-c-page";
+  static const settingsDPagePath = "/settings-d-page";
 }

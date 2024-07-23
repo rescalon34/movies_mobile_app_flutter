@@ -12,13 +12,13 @@ part 'home_routes.g.dart';
 List<GoRoute> getHomeRoutes() {
   return [
     GoRoute(
-      path: AppRoutes.homePage.path,
+      path: AppRoutes.homePagePath,
       pageBuilder: (context, state) =>
           const NoTransitionPage(child: HomePage()),
     ),
     GoRoute(
-      path: AppRoutes.movieDetailsPage.path,
-      name: AppRoutes.movieDetailsPage.name,
+      path: AppRoutes.movieDetailsPagePath,
+      name: AppRoutes.movieDetailsPagePath.name,
       builder: (context, state) {
         String movieName = state.uri.queryParameters['movieName'] ?? "";
         String releaseDate = state.uri.queryParameters['releaseDate'] ?? "";
@@ -34,10 +34,10 @@ List<GoRoute> getHomeRoutes() {
 }
 
 @TypedGoRoute<HomePageRoute>(
-  path: "/${AppRoutes.homePage}",
+  path: AppRoutes.homePagePath,
   routes: [
     TypedGoRoute<MovieDetailsPageRoute>(
-      path: AppRoutes.movieDetailsPage,
+      path: AppRoutes.movieDetailsPagePath,
     )
   ],
 )

@@ -7,7 +7,7 @@ import '../app_routes.dart';
 List<GoRoute> getSearchRoutes() {
   return [
     GoRoute(
-      path: AppRoutes.searchPage.path,
+      path: AppRoutes.searchPagePath,
       pageBuilder: (context, state) =>
           const NoTransitionPage(child: SearchPage()),
     ),
