@@ -6,8 +6,9 @@ class AppRoutes {
   static const downloadPagePath = "/download-page";
   static const profilePagePath = "/profile-page";
 
-  // App pages paths
+  // App pages
   static const movieDetailsPagePath = "/movie-details-page";
+  static const movieDetailsPage = "movie-details-page";
 
   // Settings Pages paths
   static const settingsAPagePath = "/settings-a-page";

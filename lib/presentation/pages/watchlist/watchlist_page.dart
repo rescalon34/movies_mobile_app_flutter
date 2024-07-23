@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_event.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';
@@ -8,7 +7,7 @@ import 'package:movies_mobile_app_flutter/presentation/components/custom_appbar.
 import 'package:movies_mobile_app_flutter/presentation/components/error_message_view.dart';
 
 import '../../../core/di/service_locator.dart';
-import '../../../core/navigation/app_routes.dart';
+import '../../../core/navigation/routes/home_routes.dart';
 import '../../../domain/model/movie.dart';
 import '../../components/generic_icon.dart';
 import '../../components/movie_item.dart';
@@ -159,17 +158,26 @@ class WatchlistPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return MovieItem(
                 movie: movies[index],
-                onTapItem: () {
-                  context.push(
-                    AppRoutes.movieDetailsPagePath,
-                    extra: movies[index],
-                  );
-                },
+                onTapItem: () => onNavigateToDetails(
+                  context,
+                  movies[index],
+                ),
               );
             },
           ),
         ],
       ),
     );
+  }
+
+  void onNavigateToDetails(
+    BuildContext context,
+    Movie movie,
+  ) {
+    MovieDetailsPageRoute(
+      movieName: movie.title,
+      releaseDate: "test date",
+      $extra: movie,
+    ).push(context);
   }
 }

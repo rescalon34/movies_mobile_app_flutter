@@ -10,14 +10,13 @@ class MovieDetailsPage extends StatelessWidget {
   final String? movieName;
   final String? releaseDate;
   final Movie? movie;
-  final String? $extraData;
 
-  const MovieDetailsPage(
-      {super.key,
-      this.movieName,
-      this.releaseDate,
-      this.movie,
-      this.$extraData});
+  const MovieDetailsPage({
+    super.key,
+    this.movieName,
+    this.releaseDate,
+    this.movie,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class MovieDetailsPage extends StatelessWidget {
                   : Text("no movie"),
               Text("movieName: $movieName"),
               Text("releaseDate: $releaseDate"),
-              Text($extraData.toString()),
+              Text(movie.toString()),
               Padding(
                 padding: const EdgeInsets.all(32),
                 child: ElevatedLargeButton(

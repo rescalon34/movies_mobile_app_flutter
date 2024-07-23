@@ -43,7 +43,7 @@ extension $MovieDetailsPageRouteExtension on MovieDetailsPageRoute {
       MovieDetailsPageRoute(
         movieName: state.uri.queryParameters['movie-name'],
         releaseDate: state.uri.queryParameters['release-date'],
-        $extra: state.extra as String?,
+        $extra: state.extra as Movie?,
       );
 
   String get location => GoRouteData.$location(

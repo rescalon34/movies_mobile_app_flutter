@@ -22,11 +22,9 @@ List<GoRoute> getHomeRoutes() {
       builder: (context, state) {
         String movieName = state.uri.queryParameters['movieName'] ?? "";
         String releaseDate = state.uri.queryParameters['releaseDate'] ?? "";
-        Movie? movie = state.extra as Movie?;
         return MovieDetailsPage(
           movieName: movieName,
           releaseDate: releaseDate,
-          movie: movie,
         );
       },
     )
@@ -37,11 +35,10 @@ List<GoRoute> getHomeRoutes() {
   path: AppRoutes.homePagePath,
   routes: [
     TypedGoRoute<MovieDetailsPageRoute>(
-      path: AppRoutes.movieDetailsPagePath,
+      path: AppRoutes.movieDetailsPage,
     )
   ],
 )
-
 class HomePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -52,7 +49,7 @@ class HomePageRoute extends GoRouteData {
 class MovieDetailsPageRoute extends GoRouteData {
   final String? movieName;
   final String? releaseDate;
-  final String? $extra;
+  final Movie? $extra;
 
   const MovieDetailsPageRoute({
     this.movieName,
@@ -65,7 +62,7 @@ class MovieDetailsPageRoute extends GoRouteData {
     return MovieDetailsPage(
       movieName: movieName,
       releaseDate: releaseDate,
-      $extraData: $extra,
+      movie: $extra,
     );
   }
 }
