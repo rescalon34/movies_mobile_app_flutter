@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
-import 'package:movies_mobile_app_flutter/domain/model/movie.dart';
+import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
 import '../../../presentation/pages/home/home_page.dart';
 import '../../../presentation/pages/movie_detail/movie_details_page.dart';
@@ -20,10 +20,8 @@ List<GoRoute> getHomeRoutes() {
       path: AppRoutes.movieDetailsPagePath,
       name: AppRoutes.movieDetailsPagePath.name,
       builder: (context, state) {
-        String movieName = state.uri.queryParameters['movieName'] ?? "";
         String releaseDate = state.uri.queryParameters['releaseDate'] ?? "";
         return MovieDetailsPage(
-          movieName: movieName,
           releaseDate: releaseDate,
         );
       },
@@ -47,12 +45,10 @@ class HomePageRoute extends GoRouteData {
 }
 
 class MovieDetailsPageRoute extends GoRouteData {
-  final String? movieName;
   final String? releaseDate;
-  final Movie? $extra;
+  final MovieDetailsArgs? $extra;
 
   const MovieDetailsPageRoute({
-    this.movieName,
     this.releaseDate,
     this.$extra,
   });
@@ -60,9 +56,8 @@ class MovieDetailsPageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return MovieDetailsPage(
-      movieName: movieName,
       releaseDate: releaseDate,
-      movie: $extra,
+      args: $extra,
     );
   }
 }

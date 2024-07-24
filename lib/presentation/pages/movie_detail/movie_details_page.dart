@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
 import '../../../core/navigation/app_routes.dart';
-import '../../../domain/model/movie.dart';
 import '../../components/custom_appbar.dart';
 import '../../components/elevated_large_button.dart';
 
 class MovieDetailsPage extends StatelessWidget {
-  final String? movieName;
   final String? releaseDate;
-  final Movie? movie;
+  final MovieDetailsArgs? args;
 
   const MovieDetailsPage({
     super.key,
-    this.movieName,
     this.releaseDate,
-    this.movie,
+    this.args,
   });
 
   @override
@@ -29,16 +27,16 @@ class MovieDetailsPage extends StatelessWidget {
           Center(
               child: Column(
             children: [
-              movie?.imageUrl != null
+              args?.movie2?.imageUrl != null
                   ? Image.network(
-                      movie?.imageUrl ?? "",
+                args?.movie2?.imageUrl ?? "",
                       width: double.infinity,
                       height: 350,
                     )
                   : Text("no movie"),
-              Text("movieName: $movieName"),
+              Text("movieName: ${args?.movie2?.title.toString()}"),
               Text("releaseDate: $releaseDate"),
-              Text(movie.toString()),
+              Text(args?.movie2?.toString() ?? "No args"),
               Padding(
                 padding: const EdgeInsets.all(32),
                 child: ElevatedLargeButton(

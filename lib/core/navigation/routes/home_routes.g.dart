@@ -41,15 +41,13 @@ extension $HomePageRouteExtension on HomePageRoute {
 extension $MovieDetailsPageRouteExtension on MovieDetailsPageRoute {
   static MovieDetailsPageRoute _fromState(GoRouterState state) =>
       MovieDetailsPageRoute(
-        movieName: state.uri.queryParameters['movie-name'],
         releaseDate: state.uri.queryParameters['release-date'],
-        $extra: state.extra as Movie?,
+        $extra: state.extra as MovieDetailsArgs?,
       );
 
   String get location => GoRouteData.$location(
         '/home-page/movie-details-page',
         queryParams: {
-          if (movieName != null) 'movie-name': movieName,
           if (releaseDate != null) 'release-date': releaseDate,
         },
       );

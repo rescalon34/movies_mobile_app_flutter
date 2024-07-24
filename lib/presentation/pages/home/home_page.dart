@@ -10,7 +10,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String movieName = "Inside Out 2";
     const String releaseDate = "Junio 17, 2024";
 
     return Scaffold(
@@ -27,7 +26,6 @@ class HomePage extends StatelessWidget {
             child: ElevatedLargeButton(
               text: "Go to Details",
               onClick: () => const MovieDetailsPageRoute(
-                movieName: movieName,
                 releaseDate: releaseDate,
               ).push(context),
             ),

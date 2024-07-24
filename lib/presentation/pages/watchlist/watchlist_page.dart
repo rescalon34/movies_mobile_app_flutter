@@ -5,6 +5,7 @@ import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/custom_appbar.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/error_message_view.dart';
+import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
 import '../../../core/di/service_locator.dart';
 import '../../../core/navigation/routes/home_routes.dart';
@@ -175,9 +176,11 @@ class WatchlistPage extends StatelessWidget {
     Movie movie,
   ) {
     MovieDetailsPageRoute(
-      movieName: movie.title,
       releaseDate: "test date",
-      $extra: movie,
+      $extra: MovieDetailsArgs(
+        movie: movie,
+        movie2: movie,
+      ),
     ).push(context);
   }
 }
