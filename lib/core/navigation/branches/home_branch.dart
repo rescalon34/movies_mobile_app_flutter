@@ -10,6 +10,6 @@ StatefulShellBranch getHomeBranch() {
   return StatefulShellBranch(
     initialLocation: AppRoutes.homePagePath,
     navigatorKey: _homeNavigatorKey,
-    routes: [$homePageRoute],
+    routes: getHomeRoutes(),
   );
 }
