@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/navigation/app_routes.dart';
+import '../../../core/navigation/app_route_paths.dart';
 import '../../components/custom_appbar.dart';
 import '../../components/elevated_large_button.dart';
 
@@ -26,7 +26,7 @@ class ProfilePage extends StatelessWidget {
               padding: const EdgeInsets.all(32),
               child: ElevatedLargeButton(
                   text: "Go to Settings",
-                  onClick: () => context.push(AppRoutes.settingsAPagePath)),
+                  onClick: () => context.push(AppRoutePaths.settingsAPagePath)),
             )
           ],
         ),

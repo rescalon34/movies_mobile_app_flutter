@@ -7,7 +7,7 @@ import 'package:movies_mobile_app_flutter/core/navigation/branches/search_branch
 import 'package:movies_mobile_app_flutter/core/navigation/branches/watchlist_branch.dart';
 
 import '../../presentation/main/bottom_navigation/main_scaffold_with_nav_bar.dart';
-import 'app_routes.dart';
+import 'app_route_paths.dart';
 
 class MainRoutes {
   final GlobalKey<NavigatorState> _rootNavigatorKey;
@@ -16,7 +16,7 @@ class MainRoutes {
 
   GoRouter get mainGoRouter {
     return GoRouter(
-      initialLocation: AppRoutes.homePagePath,
+      initialLocation: AppRoutePaths.homePagePath,
       navigatorKey: _rootNavigatorKey,
       routes: [
         StatefulShellRoute.indexedStack(

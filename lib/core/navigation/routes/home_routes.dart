@@ -4,20 +4,20 @@ import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_
 
 import '../../../presentation/pages/home/home_page.dart';
 import '../../../presentation/pages/movie_detail/movie_details_page.dart';
-import '../app_routes.dart';
+import '../app_route_paths.dart';
 
 part 'home_routes.g.dart';
 
 // List<GoRoute> getHomeRoutes() {
 //   return [
 //     GoRoute(
-//       path: AppRoutes.homePagePath,
+//       path: AppRoutePaths.homePagePath,
 //       pageBuilder: (context, state) =>
 //           const NoTransitionPage(child: HomePage()),
 //     ),
 //     GoRoute(
-//       path: AppRoutes.movieDetailsPagePath,
-//       name: AppRoutes.movieDetailsPagePath.name,
+//       path: AppRoutePaths.movieDetailsPagePath,
+//       name: AppRoutePaths.movieDetailsPagePath.name,
 //       builder: (context, state) {
 //         String releaseDate = state.uri.queryParameters['releaseDate'] ?? "";
 //         return MovieDetailsPage(
@@ -30,7 +30,7 @@ part 'home_routes.g.dart';
 
 List<RouteBase> getHomeRoutes() => $appRoutes;
 
-@TypedGoRoute<HomePageRoute>(path: AppRoutes.homePagePath)
+@TypedGoRoute<HomePageRoute>(path: AppRoutePaths.homePagePath)
 class HomePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -38,7 +38,7 @@ class HomePageRoute extends GoRouteData {
   }
 }
 
-@TypedGoRoute<MovieDetailsPageRoute>(path: AppRoutes.movieDetailsPagePath)
+@TypedGoRoute<MovieDetailsPageRoute>(path: AppRoutePaths.movieDetailsPagePath)
 class MovieDetailsPageRoute extends GoRouteData {
   final String? releaseDate;
   final MovieDetailsArgs? $extra;
