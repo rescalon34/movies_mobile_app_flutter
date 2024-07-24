@@ -30,14 +30,7 @@ part 'home_routes.g.dart';
 
 List<RouteBase> getHomeRoutes() => $appRoutes;
 
-@TypedGoRoute<HomePageRoute>(
-  path: AppRoutes.homePagePath,
-  routes: [
-    TypedGoRoute<MovieDetailsPageRoute>(
-      path: AppRoutes.movieDetailsPage,
-    )
-  ],
-)
+@TypedGoRoute<HomePageRoute>(path: AppRoutes.homePagePath)
 class HomePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -45,6 +38,7 @@ class HomePageRoute extends GoRouteData {
   }
 }
 
+@TypedGoRoute<MovieDetailsPageRoute>(path: AppRoutes.movieDetailsPagePath)
 class MovieDetailsPageRoute extends GoRouteData {
   final String? releaseDate;
   final MovieDetailsArgs? $extra;

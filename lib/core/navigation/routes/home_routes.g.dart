@@ -8,17 +8,12 @@ part of 'home_routes.dart';
 
 List<RouteBase> get $appRoutes => [
       $homePageRoute,
+      $movieDetailsPageRoute,
     ];
 
 RouteBase get $homePageRoute => GoRouteData.$route(
       path: '/home-page',
       factory: $HomePageRouteExtension._fromState,
-      routes: [
-        GoRouteData.$route(
-          path: 'movie-details-page',
-          factory: $MovieDetailsPageRouteExtension._fromState,
-        ),
-      ],
     );
 
 extension $HomePageRouteExtension on HomePageRoute {
@@ -38,6 +33,11 @@ extension $HomePageRouteExtension on HomePageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+RouteBase get $movieDetailsPageRoute => GoRouteData.$route(
+      path: '/movie-details-page',
+      factory: $MovieDetailsPageRouteExtension._fromState,
+    );
+
 extension $MovieDetailsPageRouteExtension on MovieDetailsPageRoute {
   static MovieDetailsPageRoute _fromState(GoRouterState state) =>
       MovieDetailsPageRoute(
@@ -46,7 +46,7 @@ extension $MovieDetailsPageRouteExtension on MovieDetailsPageRoute {
       );
 
   String get location => GoRouteData.$location(
-        '/home-page/movie-details-page',
+        '/movie-details-page',
         queryParams: {
           if (releaseDate != null) 'release-date': releaseDate,
         },
