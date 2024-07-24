@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/home_routes.dart';
+import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/elevated_large_button.dart';
 
 import '../../components/custom_appbar.dart';
@@ -25,9 +26,9 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(32),
             child: ElevatedLargeButton(
               text: "Go to Details",
-              onClick: () => const MovieDetailsPageRoute(
-                releaseDate: releaseDate,
-              ).push(context),
+              onClick: () => context.navigator.pushPage(
+                MovieDetailsPageRoute(releaseDate: releaseDate),
+              ),
             ),
           )
         ],

@@ -5,6 +5,7 @@ import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_
 import '../../../presentation/pages/home/home_page.dart';
 import '../../../presentation/pages/movie_detail/movie_details_page.dart';
 import '../app_route_paths.dart';
+import '../base_go_route_data.dart';
 
 part 'home_routes.g.dart';
 
@@ -39,11 +40,11 @@ class HomePageRoute extends GoRouteData {
 }
 
 @TypedGoRoute<MovieDetailsPageRoute>(path: AppRoutePaths.movieDetailsPagePath)
-class MovieDetailsPageRoute extends GoRouteData {
+class MovieDetailsPageRoute extends BaseGoRouteData {
   final String? releaseDate;
   final MovieDetailsArgs? $extra;
 
-  const MovieDetailsPageRoute({
+  MovieDetailsPageRoute({
     this.releaseDate,
     this.$extra,
   });
@@ -55,4 +56,7 @@ class MovieDetailsPageRoute extends GoRouteData {
       args: $extra,
     );
   }
+
+  @override
+  String get location => AppRoutePaths.movieDetailsPagePath;
 }

@@ -1,27 +1,13 @@
-/// Extension methods to handle navigation-related operations for page names.
-extension NavigationExtensions on String? {
-  /// Converts the page name to a path.
-  ///
-  /// This extension property takes a page name and prefixes it with a `/`,
-  /// converting it to a route path format. If the page name is `null`, it returns
-  /// an empty string.
-  ///
-  /// Example:
-  /// ```
-  /// static const homePage = "home-page";
-  /// homePage.path => "/home-page"
-  /// ```
-  String get path => this != null ? "/$this" : '';
+import 'package:flutter/cupertino.dart';
 
-  /// Retrieves the name of the page.
-  ///
-  /// This extension property returns the original page name if it's not `null`.
-  /// If the page name is `null`, it returns an empty string.
-  ///
-  /// Example:
-  /// ```
-  /// static const homePage = "home-page";
-  /// homePage.name => "home-page"
-  /// ```
-  String get name => this?.replaceAll("/", "") ?? '';
+import '../navigation/coordinator/app_navigator.dart';
+
+/// Extension on [BuildContext] to provide easy access to the [AppNavigator].
+///
+/// Example usage:
+/// ```
+/// context.navigator.pushPage(MovieDetailsPageRoute(movieId: '123'));
+/// ```
+extension AppNavigatorExtensions on BuildContext {
+  AppNavigator get navigator => AppNavigatorImpl(this);
 }
