@@ -33,6 +33,7 @@ class MainScaffoldWithNavBar extends StatelessWidget {
     );
   }
 
+  /// Android NavigationBar UI.
   NavigationBar _buildNavigationBar() {
     return NavigationBar(
       selectedIndex: navigationShell.currentIndex,
@@ -49,6 +50,7 @@ class MainScaffoldWithNavBar extends StatelessWidget {
     );
   }
 
+  /// iOS Bottom TabBar UI.
   CupertinoTabBar _buildCupertinoTabBar() {
     return CupertinoTabBar(
       currentIndex: navigationShell.currentIndex,
