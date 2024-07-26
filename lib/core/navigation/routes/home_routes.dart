@@ -9,34 +9,17 @@ import '../base_go_route_data.dart';
 
 part 'home_routes.g.dart';
 
-// List<GoRoute> getHomeRoutes() {
-//   return [
-//     GoRoute(
-//       path: AppRoutePaths.homePagePath,
-//       pageBuilder: (context, state) =>
-//           const NoTransitionPage(child: HomePage()),
-//     ),
-//     GoRoute(
-//       path: AppRoutePaths.movieDetailsPagePath,
-//       name: AppRoutePaths.movieDetailsPagePath.name,
-//       builder: (context, state) {
-//         String releaseDate = state.uri.queryParameters['releaseDate'] ?? "";
-//         return MovieDetailsPage(
-//           releaseDate: releaseDate,
-//         );
-//       },
-//     )
-//   ];
-// }
-
 List<RouteBase> getHomeRoutes() => $appRoutes;
 
 @TypedGoRoute<HomePageRoute>(path: AppRoutePaths.homePagePath)
-class HomePageRoute extends GoRouteData {
+class HomePageRoute extends BaseGoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const HomePage();
   }
+
+  @override
+  String get location => AppRoutePaths.homePagePath;
 }
 
 @TypedGoRoute<MovieDetailsPageRoute>(path: AppRoutePaths.movieDetailsPagePath)

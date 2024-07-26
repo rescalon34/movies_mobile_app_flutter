@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/coordinator/app_navigator.dart';
 import 'package:movies_mobile_app_flutter/data/networking/network_service.dart';
 import 'package:movies_mobile_app_flutter/data/repository/watchlist_repository_impl.dart';
 import 'package:movies_mobile_app_flutter/domain/repository/watchlist_repository.dart';
@@ -21,4 +23,9 @@ Future<void> initDependencies() async {
 
   // Bloc
   sl.registerFactory<WatchlistBloc>(() => WatchlistBloc(sl()));
+
+  // Navigation
+  sl.registerFactoryParam<AppNavigator, BuildContext, void>(
+    (context, _) => AppNavigatorImpl(context),
+  );
 }

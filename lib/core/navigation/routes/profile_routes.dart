@@ -11,49 +11,26 @@ import '../base_go_route_data.dart';
 
 part 'profile_routes.g.dart';
 
-// List<GoRoute> getProfileRoutes() {
-//   return [
-//     GoRoute(
-//       path: AppRoutePaths.profilePagePath,
-//       builder: (context, state) => const ProfilePage(),
-//     ),
-//     GoRoute(
-//       path: AppRoutePaths.settingsAPagePath,
-//       name: AppRoutePaths.settingsAPagePath.name,
-//       builder: (context, state) => const SettingsAPage(),
-//     ),
-//     GoRoute(
-//       path: AppRoutePaths.settingsBPagePath,
-//       name: AppRoutePaths.settingsBPagePath.name,
-//       builder: (context, state) => const SettingsBPage(),
-//     ),
-//     GoRoute(
-//       path: AppRoutePaths.settingsCPagePath,
-//       name: AppRoutePaths.settingsCPagePath.name,
-//       builder: (context, state) => const SettingsCPage(),
-//     ),
-//     GoRoute(
-//       path: AppRoutePaths.settingsDPagePath,
-//       name: AppRoutePaths.settingsDPagePath.name,
-//       builder: (context, state) => const SettingsDPage(),
-//     )
-//   ];
-// }
-
 List<RouteBase> getProfileRoutes() => $appRoutes;
 
 @TypedGoRoute<ProfilePageRoute>(path: AppRoutePaths.profilePagePath)
-class ProfilePageRoute extends GoRouteData {
+class ProfilePageRoute extends BaseGoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const ProfilePage();
+
+  @override
+  String get location => AppRoutePaths.profilePagePath;
 }
 
 @TypedGoRoute<SettingsAPageRoute>(path: AppRoutePaths.settingsAPagePath)
-class SettingsAPageRoute extends GoRouteData {
+class SettingsAPageRoute extends BaseGoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const SettingsAPage();
+
+  @override
+  String get location => AppRoutePaths.settingsAPagePath;
 }
 
 @TypedGoRoute<SettingsBPageRoute>(path: AppRoutePaths.settingsBPagePath)
