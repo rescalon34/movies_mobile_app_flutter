@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_event.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/custom_appbar.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/error_message_view.dart';
+import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
 import '../../../core/di/service_locator.dart';
+import '../../../core/navigation/routes/home_routes.dart';
 import '../../../domain/model/movie.dart';
 import '../../components/generic_icon.dart';
 import '../../components/movie_item.dart';
@@ -157,13 +160,26 @@ class WatchlistPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return MovieItem(
                 movie: movies[index],
-                onTapItem: () {
-                  debugPrint("movie item tapped: ${movies[index].title}");
-                },
+                onTapItem: () => _onNavigateToDetails(
+                  context,
+                  movies[index],
+                ),
               );
             },
           ),
         ],
+      ),
+    );
+  }
+
+  void _onNavigateToDetails(BuildContext context, Movie movie) {
+    context.navigator.pushPage(
+      MovieDetailsPageRoute(
+        releaseDate: "July 22",
+        $extra: MovieDetailsArgs(
+          movie: movie,
+          movie2: movie,
+        ),
       ),
     );
   }

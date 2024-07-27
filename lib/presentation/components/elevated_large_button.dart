@@ -22,12 +22,16 @@ class ElevatedLargeButton extends StatelessWidget {
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
-        ));
+        )
+    );
 
-    return ElevatedButton(
-      style: style,
-      onPressed: onClick,
-      child: Text(text),
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: style,
+        onPressed: onClick,
+        child: Text(text),
+      ),
     );
   }
 }
