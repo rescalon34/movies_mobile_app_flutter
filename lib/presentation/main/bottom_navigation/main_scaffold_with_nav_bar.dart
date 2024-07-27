@@ -59,7 +59,6 @@ class MainScaffoldWithNavBar extends StatelessWidget {
           .map(
             (entry) => BottomNavigationBarItem(
               icon: Icon(entry.cupertino),
-              // label: entry.label,
             ),
           )
           .toList(),

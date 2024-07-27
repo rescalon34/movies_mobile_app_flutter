@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/profile_routes.dart';
 import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
-import '../../../core/navigation/app_route_paths.dart';
 import '../../components/custom_appbar.dart';
 import '../../components/elevated_large_button.dart';
 
@@ -31,7 +29,7 @@ class MovieDetailsPage extends StatelessWidget {
             children: [
               args?.movie2?.imageUrl != null
                   ? Image.network(
-                args?.movie2?.imageUrl ?? "",
+                      args?.movie2?.imageUrl ?? "",
                       width: double.infinity,
                       height: 350,
                     )

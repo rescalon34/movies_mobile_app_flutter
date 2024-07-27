@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/custom_appbar.dart';
 
@@ -17,7 +16,9 @@ class GenericPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: screenTitle,),
+      appBar: CustomAppBar(
+        title: screenTitle,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,

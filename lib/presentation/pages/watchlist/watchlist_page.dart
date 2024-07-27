@@ -160,7 +160,7 @@ class WatchlistPage extends StatelessWidget {
             itemBuilder: (context, index) {
               return MovieItem(
                 movie: movies[index],
-                onTapItem: () => onNavigateToDetails(
+                onTapItem: () => _onNavigateToDetails(
                   context,
                   movies[index],
                 ),
@@ -172,7 +172,7 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
-  void onNavigateToDetails(BuildContext context, Movie movie) {
+  void _onNavigateToDetails(BuildContext context, Movie movie) {
     context.navigator.pushPage(
       MovieDetailsPageRoute(
         releaseDate: "July 22",
