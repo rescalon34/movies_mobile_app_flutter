@@ -9,6 +9,7 @@ import '../../pages/watchlist/watchlist_page.dart';
 
 /// Contains bottom navigation destinations and screens.
 /// The length of screens and destinations must be the same.
+///
 class BottomNavigationItems {
   static const List<Widget> screens = [
     HomePage(),
