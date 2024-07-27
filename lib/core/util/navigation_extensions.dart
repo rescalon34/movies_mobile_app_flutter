@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../di/di_main_module.dart';
-import '../navigation/coordinator/app_navigator.dart';
+import '../navigation/app_navigator/app_navigator.dart';
 
 /// Extension on [BuildContext] to provide easy access to the [AppNavigator].
 ///
