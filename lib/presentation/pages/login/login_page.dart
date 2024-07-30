@@ -34,7 +34,8 @@ class LoginPage extends StatelessWidget {
             onClick: () {
               context.read<UserAuthenticationBloc>().add(const LoggedIn());
             },
-          )
+          ),
+          const Gap(32),
         ],
       ),
     );
@@ -66,7 +67,7 @@ class LoginPage extends StatelessWidget {
             border: OutlineInputBorder(),
           ),
         ),
-        Gap(16),
+        Gap(24),
         TextField(
           obscureText: true,
           decoration: InputDecoration(

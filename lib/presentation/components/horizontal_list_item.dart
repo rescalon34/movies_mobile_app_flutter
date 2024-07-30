@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class HorizontalListItem extends StatelessWidget {
   final String text;
@@ -17,7 +18,7 @@ class HorizontalListItem extends StatelessWidget {
     return GestureDetector(
       onTap: onItemClick,
       child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 0, top: 4),
+        padding: const EdgeInsets.only(left: 16, right: 0, top: 8),
         child: Container(
           color: Colors.transparent,
           child: Column(
@@ -42,6 +43,7 @@ class HorizontalListItem extends StatelessWidget {
                   )
                 ],
               ),
+              const Gap(8),
               const Divider()
             ],
           ),
