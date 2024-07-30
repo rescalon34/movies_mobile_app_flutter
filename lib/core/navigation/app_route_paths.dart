@@ -15,4 +15,7 @@ class AppRoutePaths {
   static const settingsBPagePath = "/settings-b-page";
   static const settingsCPagePath = "/settings-c-page";
   static const settingsDPagePath = "/settings-d-page";
+
+  // Login
+  static const loginPagePath = "/login";
 }

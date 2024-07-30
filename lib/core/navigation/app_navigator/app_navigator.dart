@@ -19,6 +19,8 @@ abstract class AppNavigator {
   /// context.navigator.pushPage(MovieDetailsPageRoute(movieId: '123', $extra: args()));
   /// ```
   void pushPage<T extends BaseGoRouteData>(T routeData);
+
+  String redirectTo<T extends BaseGoRouteData>(T routeData);
 }
 
 class AppNavigatorImpl implements AppNavigator {
@@ -29,5 +31,10 @@ class AppNavigatorImpl implements AppNavigator {
   @override
   void pushPage<T extends BaseGoRouteData>(T routeData) {
     context.push(routeData.location, extra: routeData);
+  }
+
+  @override
+  String redirectTo<T extends BaseGoRouteData>(T routeData) {
+    return routeData.location;
   }
 }

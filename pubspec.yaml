@@ -124,3 +124,7 @@ flutter:
           weight: 400
         - asset: fonts/Montserrat-SemiBold.ttf
           weight: 600
+
+# Assets
+  assets:
+     - assets/ic_movie.png
