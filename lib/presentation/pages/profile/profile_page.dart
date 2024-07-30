@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/data/util/string_extensions.dart';
 
+import '../../../core/navigation/routes/general_routes/general_routes.dart';
 import '../../../core/navigation/routes/profile_routes.dart';
 import '../../../data/util/network_constants.dart';
 import '../../components/circle_gradient_avatar.dart';
@@ -71,15 +72,23 @@ class ProfilePage extends StatelessWidget {
         ),
         HorizontalListItem(
           text: "Account Policy",
-          onItemClick: () => print("Account Policy click"),
+          onItemClick: () {
+            context.navigator
+                .pushPage(GenericPageRoute(title: "Account Policy"));
+          },
         ),
         HorizontalListItem(
           text: "Privacy Policy",
-          onItemClick: () => print("Privacy Policy click"),
+          onItemClick: () {
+            context.navigator
+                .pushPage(GenericPageRoute(title: "Privacy Policy"));
+          },
         ),
         HorizontalListItem(
           text: "Credits",
-          onItemClick: () => print("Credits click"),
+          onItemClick: () {
+            context.navigator.pushPage(GenericPageRoute(title: "Credits"));
+          },
         ),
         HorizontalListItem(
           text: "Log out",

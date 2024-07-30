@@ -5,6 +5,8 @@ import 'package:movies_mobile_app_flutter/core/navigation/branches/home_branch.d
 import 'package:movies_mobile_app_flutter/core/navigation/branches/profile_branch.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/branches/search_branch.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/branches/watchlist_branch.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/routes/general_routes/general_routes.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/routes/login/authentication_routes.dart';
 
 import '../../presentation/main/bottom_navigation/main_scaffold_with_nav_bar.dart';
 import 'app_route_paths.dart';
@@ -31,7 +33,9 @@ class MainRoutes {
             getDownloadBranch(),
             getProfileBranch()
           ],
-        )
+        ),
+        $loginPageRoute,
+        $genericPageRoute,
       ],
     );
   }
