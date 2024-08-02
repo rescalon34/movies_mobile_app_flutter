@@ -7,6 +7,8 @@ import '../../../util/base_go_route_data.dart';
 
 part 'general_routes.g.dart';
 
+List<RouteBase> getGeneralRoutes() => $appRoutes;
+
 @TypedGoRoute<GenericPageRoute>(path: AppRoutePaths.genericPagePath)
 class GenericPageRoute extends BaseGoRouteData {
   final String? title;

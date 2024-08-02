@@ -44,10 +44,20 @@ class MainRoutes {
               getProfileBranch()
             ],
           ),
-          $loginPageRoute,
-          $genericPageRoute,
+          ...getAllRoutes(),
         ],
         refreshListenable: _streamToListenable.addStream([_authBloc.stream]),
         redirect: _authRedirector.authRedirectorHandler);
+  }
+
+  /// Add here all route list which don't belong to a specific branch.
+  /// Using the 'spread' operator to combine multiple collections into a single list.
+  /// Since getAuthenticationRoutes() is a list, the handy '...' 'spread operator'
+  /// helps to merge the list.
+  List<RouteBase> getAllRoutes() {
+    return [
+      ...getAuthenticationRoutes(),
+      ...getGeneralRoutes(),
+    ];
   }
 }
