@@ -9,7 +9,7 @@ import 'package:movies_mobile_app_flutter/presentation/components/error_message_
 import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
 import '../../../core/di/di_main_module.dart';
-import '../../../core/navigation/routes/home_routes.dart';
+import '../../../core/navigation/routes/home/home_routes.dart';
 import '../../../domain/model/movie.dart';
 import '../../components/generic_icon.dart';
 import '../../components/movie_item.dart';

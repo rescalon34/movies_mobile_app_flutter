@@ -5,7 +5,7 @@ import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/data/util/string_extensions.dart';
 
 import '../../../core/navigation/routes/general_routes/general_routes.dart';
-import '../../../core/navigation/routes/profile_routes.dart';
+import '../../../core/navigation/routes/profile/profile_routes.dart';
 import '../../../data/util/network_constants.dart';
 import '../../bloc/user_authentication/user_authentication_bloc.dart';
 import '../../components/circle_gradient_avatar.dart';

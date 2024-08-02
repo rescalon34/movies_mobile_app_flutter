@@ -4,7 +4,7 @@ import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 
 import '../../../presentation/bloc/user_authentication/user_authentication_bloc.dart';
 import '../app_route_paths.dart';
-import '../routes/home_routes.dart';
+import '../routes/home/home_routes.dart';
 import '../routes/login/authentication_routes.dart';
 
 /// This class responsible for handling authentication-based, and onboarding flow redirections within the app.

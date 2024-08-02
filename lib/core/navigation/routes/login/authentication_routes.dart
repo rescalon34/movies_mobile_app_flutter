@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/login/login_page.dart';
 
 import '../../app_route_paths.dart';
-import '../../base_go_route_data.dart';
+import '../../../util/base_go_route_data.dart';
 
 part 'authentication_routes.g.dart';
 

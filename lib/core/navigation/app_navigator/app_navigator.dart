@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-import '../base_go_route_data.dart';
+import '../../util/base_go_route_data.dart';
 
 /// Abstract class for navigating between pages in the application.
 ///
