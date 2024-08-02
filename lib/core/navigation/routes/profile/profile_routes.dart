@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/profile/profile_page.dart';
 
-import '../../../presentation/pages/settings/settings_a_page.dart';
-import '../../../presentation/pages/settings/settings_b_page.dart';
-import '../../../presentation/pages/settings/settings_c_page.dart';
-import '../../../presentation/pages/settings/settings_d_page.dart';
-import '../app_route_paths.dart';
-import '../base_go_route_data.dart';
+import '../../../../presentation/pages/settings/settings_a_page.dart';
+import '../../../../presentation/pages/settings/settings_b_page.dart';
+import '../../../../presentation/pages/settings/settings_c_page.dart';
+import '../../../../presentation/pages/settings/settings_d_page.dart';
+import '../../app_route_paths.dart';
+import '../../../util/base_go_route_data.dart';
 
 part 'profile_routes.g.dart';
 
