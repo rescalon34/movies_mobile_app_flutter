@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:movies_mobile_app_flutter/core/di/di_main_module.dart';
+import 'package:movies_mobile_app_flutter/core/extension/app_core_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/routes/home/home_routes.dart';
 
-import '../../bloc/user_authentication/user_authentication_bloc.dart';
+import '../../../core/util/shared_pref_helper.dart';
 import '../../components/elevated_large_button.dart';
 
 class LoginPage extends StatelessWidget {
@@ -10,13 +13,21 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SharedPrefHelper shredPref = getIt<SharedPrefHelper>();
+
+    context.setStatusBarColor();
+
     return Scaffold(
-      body: _buildLoginBody(context),
+      body: _buildLoginBody(
+        context,
+        shredPref,
+      ),
     );
   }
 
   Widget _buildLoginBody(
     BuildContext context,
+    SharedPrefHelper sharedPref,
   ) {
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -32,7 +43,8 @@ class LoginPage extends StatelessWidget {
           ElevatedLargeButton(
             text: "Login",
             onClick: () {
-              context.read<UserAuthenticationBloc>().add(const LoggedIn());
+              context.navigator.navigateTo(HomePageRoute());
+              sharedPref.setString(SharedPrefHelperImpl.userNameKey, "Robert!");
             },
           ),
           const Gap(32),

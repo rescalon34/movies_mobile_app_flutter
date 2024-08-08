@@ -6,6 +6,7 @@ import 'package:movies_mobile_app_flutter/core/theme/movies_app_theme.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/user_authentication/user_authentication_bloc.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await setupDependencyModules();
   runApp(const MyApp());
 }

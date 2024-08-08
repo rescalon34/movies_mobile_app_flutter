@@ -21,6 +21,8 @@ abstract class AppNavigator {
   void pushPage<T extends BaseGoRouteData>(T routeData);
 
   String redirectTo<T extends BaseGoRouteData>(T routeData);
+
+  void navigateTo<T extends BaseGoRouteData>(T routeData);
 }
 
 class AppNavigatorImpl implements AppNavigator {
@@ -36,5 +38,10 @@ class AppNavigatorImpl implements AppNavigator {
   @override
   String redirectTo<T extends BaseGoRouteData>(T routeData) {
     return routeData.location;
+  }
+
+  @override
+  void navigateTo<T extends BaseGoRouteData>(T routeData) {
+    context.go(routeData.location);
   }
 }

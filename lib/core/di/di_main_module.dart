@@ -23,4 +23,6 @@ Future<void> setupDependencyModules() async {
   setupUseCasesModule(getIt);
   setupBlocModule(getIt);
   setupNavigationModule(getIt);
+
+  await getIt.allReady();
 }

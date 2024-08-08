@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 
 import '../../../presentation/bloc/user_authentication/user_authentication_bloc.dart';
 import '../app_route_paths.dart';
@@ -15,8 +15,12 @@ class AuthRedirector {
 
   String? authRedirectorHandler(BuildContext context, GoRouterState state) {
     bool isAuthenticated = _authBloc.state is Authenticated;
-    print("tellAuthStatus: isAuthenticated: $isAuthenticated");
     final goingToLogin = state.uri.toString() == AppRoutePaths.loginPagePath;
+    final goingToSplash = state.uri.toString() == AppRoutePaths.splashPagePath;
+
+    if (goingToSplash) {
+      return null; // Allow navigation to splash screen
+    }
 
     if (!isAuthenticated) {
       print("tellAuthStatus: redirect to login!");
