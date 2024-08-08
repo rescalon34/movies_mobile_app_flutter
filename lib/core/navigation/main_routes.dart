@@ -46,8 +46,8 @@ class MainRoutes {
           ],
         ),
       ],
-      // refreshListenable: _streamToListenable.addStream([_authBloc.stream]),
-      // redirect: _authRedirector.authRedirectorHandler,
+      refreshListenable: _streamToListenable.addStream([_authBloc.stream]),
+      redirect: _authRedirector.authRedirectorHandler,
     );
   }
 

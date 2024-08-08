@@ -43,8 +43,10 @@ class LoginPage extends StatelessWidget {
           ElevatedLargeButton(
             text: "Login",
             onClick: () {
-              context.navigator.navigateTo(HomePageRoute());
               sharedPref.setString(SharedPrefHelperImpl.userNameKey, "Robert!");
+              // TODO: Simulating a logged in status, this must be set on real login status.
+              sharedPref.setBoolean(SharedPrefHelperImpl.isUserLoggedIn, true);
+              context.navigator.navigateTo(HomePageRoute());
             },
           ),
           const Gap(32),

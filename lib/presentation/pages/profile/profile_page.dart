@@ -37,7 +37,10 @@ class _ProfilePageState extends State<ProfilePage> {
             const Gap(16),
             _buildProfileHeader(sharedPref),
             const Gap(24),
-            _buildProfileOptions(context),
+            _buildProfileOptions(
+              context,
+              sharedPref,
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Text(
@@ -79,7 +82,10 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildProfileOptions(BuildContext context) {
+  Widget _buildProfileOptions(
+    BuildContext context,
+    SharedPrefHelper sharedPref,
+  ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -111,6 +117,8 @@ class _ProfilePageState extends State<ProfilePage> {
           text: "Log out",
           showArrowIcon: false,
           onItemClick: () {
+            // TODO: Simulating a logout for now.
+            sharedPref.setBoolean(SharedPrefHelperImpl.isUserLoggedIn, false);
             context.navigator.navigateTo(LoginPageRoute());
           },
         ),

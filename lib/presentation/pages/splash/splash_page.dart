@@ -5,9 +5,9 @@ import 'package:movies_mobile_app_flutter/core/extension/app_core_extensions.dar
 import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/home/home_routes.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/login/authentication_routes.dart';
+import 'package:movies_mobile_app_flutter/core/util/shared_pref_helper.dart';
 
 import '../../../core/di/di_main_module.dart';
-import '../../bloc/user_authentication/user_authentication_bloc.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -17,7 +17,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  final UserAuthenticationBloc _authBloc = getIt<UserAuthenticationBloc>();
+  final SharedPrefHelper _sharedPrefs = getIt<SharedPrefHelper>();
 
   @override
   void initState() {
@@ -27,10 +27,11 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> _initializeApp() async {
     await Future.delayed(const Duration(seconds: 3));
-    bool isAuthenticated = _authBloc.state is Authenticated;
+    bool? isLoggedIn =
+        _sharedPrefs.getBoolean(SharedPrefHelperImpl.isUserLoggedIn) ?? false;
 
     if (!mounted) return;
-    if (isAuthenticated) {
+    if (isLoggedIn) {
       context.navigator.navigateTo(HomePageRoute());
     } else {
       context.navigator.navigateTo(LoginPageRoute());
