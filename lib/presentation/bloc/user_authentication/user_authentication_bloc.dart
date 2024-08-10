@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:movies_mobile_app_flutter/domain/model/user_credentials.dart';
 import 'package:movies_mobile_app_flutter/domain/usecase/login_use_case.dart';
@@ -41,13 +42,16 @@ class UserAuthenticationBloc
     UserCredentials? credentials,
     Emitter<UserAuthenticationState> emit,
   ) async {
+    emit(const Loading(true));
     final dataState = await _loginUseCase();
     debugPrint("trying to fetch data...");
 
     if (dataState is DataSuccess) {
+      emit(const Loading(false));
       debugPrint("DataSuccess data: ${dataState.data}");
       emit(const Authenticated());
     } else if (dataState is DataFailure) {
+      emit(const Loading(false));
       debugPrint("DataSuccess error: ${dataState.error}");
       emit(const UnAuthenticated());
     }

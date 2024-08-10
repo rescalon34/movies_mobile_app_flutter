@@ -35,11 +35,16 @@ class LoginPage extends StatelessWidget {
             return Scaffold(
               body: _buildLoginBody(
                 context,
+                state,
                 sharedPref,
                 () {
-                  context.read<UserAuthenticationBloc>().add(const OnSubmitLogin(
-                    credentials: UserCredentials(userName: "rescalon34", password: "1234!")
-                  ));
+                  // TODO: Handle this userCredentials from each TextField
+                  context
+                      .read<UserAuthenticationBloc>()
+                      .add(const OnSubmitLogin(
+                        credentials: UserCredentials(
+                            userName: "rescalon34", password: "1234!"),
+                      ));
                 },
               ),
             );
@@ -51,25 +56,32 @@ class LoginPage extends StatelessWidget {
 
   Widget _buildLoginBody(
     BuildContext context,
+    UserAuthenticationState state,
     SharedPrefHelper sharedPref,
     VoidCallback onLoginClickEvent,
   ) {
     return Padding(
       padding: const EdgeInsets.all(24),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
+      child: Stack(
         children: [
-          const Gap(60),
-          _buildHeaderContent(context),
-          const Gap(48),
-          _buildFormTextFields(),
-          const Spacer(flex: 1),
-          ElevatedLargeButton(
-            text: "Login",
-            onClick: onLoginClickEvent,
+          if (state.isLoading)
+            const Center(child: CircularProgressIndicator.adaptive()),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const Gap(60),
+              _buildHeaderContent(context),
+              const Gap(48),
+              _buildFormTextFields(),
+              const Spacer(flex: 1),
+              ElevatedLargeButton(
+                text: "Login",
+                onClick: state.isLoading ? null : onLoginClickEvent,
+              ),
+              const Gap(32),
+            ],
           ),
-          const Gap(32),
         ],
       ),
     );
