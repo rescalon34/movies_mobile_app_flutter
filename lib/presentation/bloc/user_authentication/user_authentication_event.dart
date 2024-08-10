@@ -5,10 +5,12 @@ sealed class UserAuthenticationEvent {
   const UserAuthenticationEvent();
 }
 
-class OnSignedIn extends UserAuthenticationEvent {
-  const OnSignedIn();
+class OnSubmitLogin extends UserAuthenticationEvent {
+  final UserCredentials? credentials;
+
+  const OnSubmitLogin({this.credentials});
 }
 
-class OnLoggedOut extends UserAuthenticationEvent {
-  const OnLoggedOut();
+class OnLoggedOutClick extends UserAuthenticationEvent {
+  const OnLoggedOutClick();
 }

@@ -5,5 +5,5 @@ import '../../presentation/bloc/watchlist/watchlist_bloc.dart';
 
 Future<void> setupBlocModule(GetIt getIt) async {
   getIt.registerFactory<WatchlistBloc>(() => WatchlistBloc(getIt()));
-  getIt.registerSingleton<UserAuthenticationBloc>(UserAuthenticationBloc());
+  getIt.registerSingleton<UserAuthenticationBloc>(UserAuthenticationBloc(getIt()));
 }

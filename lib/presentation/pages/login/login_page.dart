@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:movies_mobile_app_flutter/core/di/di_main_module.dart';
 import 'package:movies_mobile_app_flutter/core/extension/app_core_extensions.dart';
 import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/home/home_routes.dart';
+import 'package:movies_mobile_app_flutter/domain/model/user_credentials.dart';
+import 'package:movies_mobile_app_flutter/presentation/bloc/user_authentication/user_authentication_bloc.dart';
 
 import '../../../core/util/shared_pref_helper.dart';
 import '../../components/elevated_large_button.dart';
@@ -13,14 +16,35 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SharedPrefHelper shredPref = getIt<SharedPrefHelper>();
-
     context.setStatusBarColor();
+    final SharedPrefHelper sharedPref = getIt<SharedPrefHelper>();
 
-    return Scaffold(
-      body: _buildLoginBody(
-        context,
-        shredPref,
+    return BlocProvider<UserAuthenticationBloc>(
+      create: (context) => getIt(),
+      child: BlocListener<UserAuthenticationBloc, UserAuthenticationState>(
+        listener: (context, state) {
+          // navigate to Home page after login state changes from bloc provider.
+          if (state is Authenticated) {
+            sharedPref.setString(SharedPrefHelperImpl.userNameKey, "Robert!");
+            sharedPref.setBoolean(SharedPrefHelperImpl.isUserLoggedIn, true);
+            context.navigator.navigateTo(HomePageRoute());
+          }
+        },
+        child: BlocBuilder<UserAuthenticationBloc, UserAuthenticationState>(
+          builder: (context, state) {
+            return Scaffold(
+              body: _buildLoginBody(
+                context,
+                sharedPref,
+                () {
+                  context.read<UserAuthenticationBloc>().add(const OnSubmitLogin(
+                    credentials: UserCredentials(userName: "rescalon34", password: "1234!")
+                  ));
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -28,6 +52,7 @@ class LoginPage extends StatelessWidget {
   Widget _buildLoginBody(
     BuildContext context,
     SharedPrefHelper sharedPref,
+    VoidCallback onLoginClickEvent,
   ) {
     return Padding(
       padding: const EdgeInsets.all(24),
@@ -42,12 +67,7 @@ class LoginPage extends StatelessWidget {
           const Spacer(flex: 1),
           ElevatedLargeButton(
             text: "Login",
-            onClick: () {
-              sharedPref.setString(SharedPrefHelperImpl.userNameKey, "Robert!");
-              // TODO: Simulating a logged in status, this must be set on real login status.
-              sharedPref.setBoolean(SharedPrefHelperImpl.isUserLoggedIn, true);
-              context.navigator.navigateTo(HomePageRoute());
-            },
+            onClick: onLoginClickEvent,
           ),
           const Gap(32),
         ],
