@@ -7,7 +7,6 @@ import 'package:movies_mobile_app_flutter/domain/usecase/login_use_case.dart';
 import '../../../data/util/data_state.dart';
 
 part 'user_authentication_event.dart';
-
 part 'user_authentication_state.dart';
 
 class UserAuthenticationBloc
@@ -32,9 +31,20 @@ class UserAuthenticationBloc
       case OnLoggedOutClick _:
         debugPrint("OnLoggedOutClick");
         break;
+      case OnObscurePassword _:
+        togglePassword(event.isObscurePassword, emit);
+        break;
       default:
         debugPrint("default statement");
     }
+  }
+
+  Future togglePassword(
+    bool? isObscurePassword,
+    Emitter<UserAuthenticationState> emit,
+  ) async {
+    debugPrint("OnTogglePassword: toggle: $isObscurePassword");
+    emit(ObscurePassword(isObscurePassword ?? false));
   }
 
   /// MARK: - perform the login API call.

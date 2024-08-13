@@ -7,6 +7,7 @@ import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.d
 import 'package:movies_mobile_app_flutter/core/navigation/routes/home/home_routes.dart';
 import 'package:movies_mobile_app_flutter/domain/model/user_credentials.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/user_authentication/user_authentication_bloc.dart';
+import 'package:movies_mobile_app_flutter/presentation/components/generic_icon.dart';
 
 import '../../../core/util/shared_pref_helper.dart';
 import '../../components/elevated_large_button.dart';
@@ -34,10 +35,10 @@ class LoginPage extends StatelessWidget {
           builder: (context, state) {
             return Scaffold(
               body: _buildLoginBody(
-                context,
-                state,
-                sharedPref,
-                () {
+                context: context,
+                state: state,
+                sharedPref: sharedPref,
+                onLoginClickEvent: () {
                   // TODO: Handle this userCredentials from each TextField
                   context
                       .read<UserAuthenticationBloc>()
@@ -45,6 +46,13 @@ class LoginPage extends StatelessWidget {
                         credentials: UserCredentials(
                             userName: "rescalon34", password: "1234!"),
                       ));
+                },
+                onTogglePasswordClick: () {
+                  context.read<UserAuthenticationBloc>().add(
+                        OnObscurePassword(
+                          isObscurePassword: !state.isObscurePassword,
+                        ),
+                      );
                 },
               ),
             );
@@ -54,12 +62,13 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginBody(
-    BuildContext context,
-    UserAuthenticationState state,
-    SharedPrefHelper sharedPref,
-    VoidCallback onLoginClickEvent,
-  ) {
+  Widget _buildLoginBody({
+    required BuildContext context,
+    required UserAuthenticationState state,
+    required SharedPrefHelper sharedPref,
+    required VoidCallback onLoginClickEvent,
+    required VoidCallback onTogglePasswordClick,
+  }) {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Stack(
@@ -73,7 +82,7 @@ class LoginPage extends StatelessWidget {
               const Gap(60),
               _buildHeaderContent(context),
               const Gap(48),
-              _buildFormTextFields(),
+              _buildFormTextFields(context, state, onTogglePasswordClick),
               const Spacer(flex: 1),
               ElevatedLargeButton(
                 text: "Login",
@@ -104,21 +113,32 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFormTextFields() {
-    return const Column(
+  Widget _buildFormTextFields(
+    BuildContext context,
+    UserAuthenticationState state,
+    VoidCallback onTogglePasswordClick,
+  ) {
+    return Column(
       children: [
-        TextField(
+        const TextField(
           decoration: InputDecoration(
             labelText: "Username",
             border: OutlineInputBorder(),
           ),
         ),
-        Gap(24),
+        const Gap(24),
         TextField(
-          obscureText: true,
+          obscureText: state.isObscurePassword,
           decoration: InputDecoration(
             labelText: "Password",
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
+            suffixIcon: GenericIcon(
+              icon: state.isObscurePassword
+                  ? Icons.lock_outline_rounded
+                  : Icons.remove_red_eye,
+              color: Theme.of(context).colorScheme.onSurface,
+              onTapIcon: onTogglePasswordClick,
+            ),
           ),
         ),
       ],
