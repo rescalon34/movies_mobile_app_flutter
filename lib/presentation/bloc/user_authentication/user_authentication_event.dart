@@ -1,5 +1,6 @@
 part of 'user_authentication_bloc.dart';
 
+/// Contains all the events triggered from the login screen.
 @immutable
 sealed class UserAuthenticationEvent {
   const UserAuthenticationEvent();

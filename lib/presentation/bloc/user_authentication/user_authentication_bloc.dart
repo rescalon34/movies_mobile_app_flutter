@@ -9,17 +9,22 @@ part 'user_authentication_event.dart';
 
 part 'user_authentication_state.dart';
 
-class UserAuthenticationBloc extends Bloc<UserAuthenticationEvent, UserAuthenticationState> {
+/// This class will handle business logic for the login screen, it will be responsible
+/// to collect UI events and execute the corresponding action, as well as updating the UI state
+/// of the login screen.
+class UserAuthenticationBloc
+    extends Bloc<UserAuthenticationEvent, UserAuthenticationState> {
   final LoginUseCase _loginUseCase;
 
   /// MARK: - initial constructor, it will set the default state by passing UserAuthenticationState()
-  UserAuthenticationBloc(this._loginUseCase) : super(const UserAuthenticationState()) {
+  UserAuthenticationBloc(this._loginUseCase)
+      : super(const UserAuthenticationState()) {
     on<UserAuthenticationEvent>((event, emit) async {
       await onScreenUiEvent(event, emit);
     });
   }
 
-  /// MARK: - main function to handle all screen UI events.
+  /// MARK: - Main function to handle all screen UI events.
   Future onScreenUiEvent(
     UserAuthenticationEvent event,
     Emitter<UserAuthenticationState> emit,
@@ -49,6 +54,7 @@ class UserAuthenticationBloc extends Bloc<UserAuthenticationEvent, UserAuthentic
   ) async {
     debugPrint("UserAuthenticationBloc: username: $username");
     emit(state.copyWith(username: username));
+    validateForm(emit);
   }
 
   /// MARK: - Password TextField value changed event
@@ -58,6 +64,7 @@ class UserAuthenticationBloc extends Bloc<UserAuthenticationEvent, UserAuthentic
   ) async {
     debugPrint("UserAuthenticationBloc: password: $password");
     emit(state.copyWith(password: password));
+    validateForm(emit);
   }
 
   /// MARK: - Show/hide password from TextField event
@@ -68,25 +75,28 @@ class UserAuthenticationBloc extends Bloc<UserAuthenticationEvent, UserAuthentic
     emit(state.copyWith(isObscurePassword: isObscurePassword));
   }
 
+  /// MARK: - Validate Login form by checking if values are not empty
+  void validateForm(Emitter<UserAuthenticationState> emit) {
+    bool isValidForm = state.username?.isNotEmpty == true &&
+        state.password?.isNotEmpty == true;
+
+    emit(state.copyWith(isValidForm: isValidForm));
+  }
+
   /// MARK: - perform the login API call.
   Future executeLogin(
     Emitter<UserAuthenticationState> emit,
   ) async {
     emit(state.copyWith(isLoading: true));
-    debugPrint(
-        "UserAuthenticationBloc: STATE for login: username:${state.username} password:${state.password}");
-
     final dataState = await _loginUseCase();
     debugPrint("trying to fetch data...");
 
     if (dataState is DataSuccess) {
-      emit(state.copyWith(isLoading: false));
       debugPrint("DataSuccess data: ${dataState.data}");
-      emit(state.copyWith(isAuthenticated: true));
+      emit(state.copyWith(isLoading: false, isAuthenticated: true));
     } else if (dataState is DataFailure) {
-      emit(state.copyWith(isLoading: false));
       debugPrint("DataSuccess error: ${dataState.error}");
-      emit(state.copyWith(isAuthenticated: false));
+      emit(state.copyWith(isLoading: false, isAuthenticated: false));
     }
   }
 }

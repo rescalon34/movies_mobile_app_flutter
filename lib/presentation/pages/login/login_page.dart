@@ -14,6 +14,7 @@ import '../../components/elevated_large_button.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
+  /// MARK: - Main widget builder
   @override
   Widget build(BuildContext context) {
     context.setStatusBarColor();
@@ -57,6 +58,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
+  /// MARK: - Main screen body
   Widget _buildLoginBody({
     required BuildContext context,
     required UserAuthenticationState state,
@@ -81,7 +83,9 @@ class LoginPage extends StatelessWidget {
               const Spacer(flex: 1),
               ElevatedLargeButton(
                 text: "Login",
-                onClick: state.isLoading ? null : onLoginClickEvent,
+                onClick: state.isLoading || !state.isValidForm
+                    ? null
+                    : onLoginClickEvent,
               ),
               const Gap(32),
             ],
@@ -91,6 +95,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
+  /// MARK: Header Widget, contains the logo and title.
   Widget _buildHeaderContent(BuildContext context) {
     return Column(
       children: [
@@ -108,6 +113,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
+  /// MARK: - TextFields widgets
   Widget _buildFormTextFields(
     BuildContext context,
     UserAuthenticationState state,
