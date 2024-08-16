@@ -25,10 +25,12 @@ class _SplashPageState extends State<SplashPage> {
     _initializeApp();
   }
 
+  /// MARK: - Initializer to decide to show the login or home screen
+  /// depending on the user login status.
   Future<void> _initializeApp() async {
     await Future.delayed(const Duration(seconds: 3));
     bool? isLoggedIn =
-        _sharedPrefs.getBoolean(SharedPrefHelperImpl.isUserLoggedIn) ?? false;
+        _sharedPrefs.getBoolean(SharedPrefHelper.isUserLoggedIn) ?? false;
 
     if (!mounted) return;
     if (isLoggedIn) {

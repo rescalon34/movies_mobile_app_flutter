@@ -68,13 +68,12 @@ class _ProfilePageState extends State<ProfilePage> {
             imageSize: 45,
           ),
           const Gap(8),
-          Text("${sharedPref.getString(SharedPrefHelperImpl.userNameKey)}"),
+          Text("${sharedPref.getString(SharedPrefHelper.userNameKey)}"),
           const Gap(8),
           RoundedButton(
             text: "Edit Profile",
             onPressed: () {
-              sharedPref.setString(
-                  SharedPrefHelperImpl.userNameKey, "rescalon34");
+              sharedPref.setString(SharedPrefHelper.userNameKey, "rescalon34");
             },
           ),
         ],
@@ -118,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
           showArrowIcon: false,
           onItemClick: () {
             // TODO: Simulating a logout for now.
-            sharedPref.setBoolean(SharedPrefHelperImpl.isUserLoggedIn, false);
+            sharedPref.setBoolean(SharedPrefHelper.isUserLoggedIn, false);
             context.navigator.navigateTo(LoginPageRoute());
           },
         ),

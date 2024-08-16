@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class SharedPrefHelper {
@@ -10,6 +8,9 @@ abstract class SharedPrefHelper {
   void setBoolean(String key, bool value);
 
   bool? getBoolean(String key);
+
+  static String userNameKey = "user_name";
+  static String isUserLoggedIn = "user_logged_in";
 }
 
 class SharedPrefHelperImpl implements SharedPrefHelper {
@@ -36,7 +37,4 @@ class SharedPrefHelperImpl implements SharedPrefHelper {
   void setBoolean(String key, bool value) {
     _sharedPreferences.setBool(key, value);
   }
-
-  static String userNameKey = "user_name";
-  static String isUserLoggedIn = "user_logged_in";
 }

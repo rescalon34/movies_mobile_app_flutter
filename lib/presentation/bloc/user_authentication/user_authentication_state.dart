@@ -10,14 +10,17 @@ class UserAuthenticationState extends Equatable {
   final bool isAuthenticated;
   final bool isValidForm;
 
-  const UserAuthenticationState(
-      {this.username = '',
-      this.password = '',
-      this.isLoading = false,
-      this.isObscurePassword = true,
-      this.isAuthenticated = false,
-      this.isValidForm = false});
+  const UserAuthenticationState({
+    this.username = '',
+    this.password = '',
+    this.isLoading = false,
+    this.isObscurePassword = true,
+    this.isAuthenticated = false,
+    this.isValidForm = false,
+  });
 
+  /// Important for the correct functionality of 'equality checks' in Bloc states.
+  /// This will ensure efficient UI updates.
   @override
   List<Object?> get props => [
         username,
