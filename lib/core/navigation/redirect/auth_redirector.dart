@@ -14,7 +14,7 @@ class AuthRedirector {
   /// on any screen.
   String? authRedirectorHandler(BuildContext context, GoRouterState state) {
     // TODO: commenting this out for now, need to review later.
-    bool isAuthenticated = _authBloc.state is Authenticated;
+    bool isAuthenticated = _authBloc.state.isAuthenticated;
     final goingToLogin = state.uri.toString() == AppRoutePaths.loginPagePath;
 
     // if (!isAuthenticated) {

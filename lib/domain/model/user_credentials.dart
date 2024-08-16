@@ -7,4 +7,3 @@ class UserCredentials {
     required this.password,
   });
 }
-

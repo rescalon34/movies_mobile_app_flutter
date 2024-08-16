@@ -5,17 +5,24 @@ sealed class UserAuthenticationEvent {
   const UserAuthenticationEvent();
 }
 
-class OnSubmitLogin extends UserAuthenticationEvent {
-  final UserCredentials? credentials;
+class OnUsernameChange extends UserAuthenticationEvent {
+  final String? username;
 
-  const OnSubmitLogin({this.credentials});
+  const OnUsernameChange({this.username});
+}
+
+class OnPasswordChange extends UserAuthenticationEvent {
+  final String? password;
+
+  const OnPasswordChange({this.password});
 }
 
 class OnObscurePassword extends UserAuthenticationEvent {
   final bool? isObscurePassword;
+
   const OnObscurePassword({this.isObscurePassword});
 }
 
-class OnLoggedOutClick extends UserAuthenticationEvent {
-  const OnLoggedOutClick();
+class OnSubmitLogin extends UserAuthenticationEvent {
+  const OnSubmitLogin();
 }

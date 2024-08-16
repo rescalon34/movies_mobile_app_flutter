@@ -5,7 +5,6 @@ import 'package:movies_mobile_app_flutter/core/di/di_main_module.dart';
 import 'package:movies_mobile_app_flutter/core/extension/app_core_extensions.dart';
 import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/home/home_routes.dart';
-import 'package:movies_mobile_app_flutter/domain/model/user_credentials.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/user_authentication/user_authentication_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/generic_icon.dart';
 
@@ -25,7 +24,7 @@ class LoginPage extends StatelessWidget {
       child: BlocListener<UserAuthenticationBloc, UserAuthenticationState>(
         listener: (context, state) {
           // navigate to Home page after login state changes from bloc provider.
-          if (state is Authenticated) {
+          if (state.isAuthenticated) {
             sharedPref.setString(SharedPrefHelperImpl.userNameKey, "Robert!");
             sharedPref.setBoolean(SharedPrefHelperImpl.isUserLoggedIn, true);
             context.navigator.navigateTo(HomePageRoute());
@@ -39,13 +38,9 @@ class LoginPage extends StatelessWidget {
                 state: state,
                 sharedPref: sharedPref,
                 onLoginClickEvent: () {
-                  // TODO: Handle this userCredentials from each TextField
                   context
                       .read<UserAuthenticationBloc>()
-                      .add(const OnSubmitLogin(
-                        credentials: UserCredentials(
-                            userName: "rescalon34", password: "1234!"),
-                      ));
+                      .add(const OnSubmitLogin());
                 },
                 onTogglePasswordClick: () {
                   context.read<UserAuthenticationBloc>().add(
@@ -120,11 +115,16 @@ class LoginPage extends StatelessWidget {
   ) {
     return Column(
       children: [
-        const TextField(
-          decoration: InputDecoration(
+        TextField(
+          decoration: const InputDecoration(
             labelText: "Username",
             border: OutlineInputBorder(),
           ),
+          onChanged: (value) {
+            context.read<UserAuthenticationBloc>().add(
+                  OnUsernameChange(username: value),
+                );
+          },
         ),
         const Gap(24),
         TextField(
@@ -140,6 +140,11 @@ class LoginPage extends StatelessWidget {
               onTapIcon: onTogglePasswordClick,
             ),
           ),
+          onChanged: (value) {
+            context.read<UserAuthenticationBloc>().add(
+                  OnPasswordChange(password: value),
+                );
+          },
         ),
       ],
     );
