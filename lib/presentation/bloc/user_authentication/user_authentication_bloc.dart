@@ -12,8 +12,7 @@ part 'user_authentication_state.dart';
 /// This class will handle business logic for the login screen, it will be responsible
 /// to collect UI events and execute the corresponding action, as well as updating the UI state
 /// of the login screen.
-class UserAuthenticationBloc
-    extends Bloc<UserAuthenticationEvent, UserAuthenticationState> {
+class UserAuthenticationBloc extends Bloc<UserAuthenticationEvent, UserAuthenticationState> {
   final LoginUseCase _loginUseCase;
 
   /// MARK: - initial constructor, it will set the default state by passing UserAuthenticationState()
@@ -48,30 +47,30 @@ class UserAuthenticationBloc
   }
 
   /// MARK: - Username TextField value changed event
-  Future onUsernameChanged(
+  void onUsernameChanged(
     String? username,
     Emitter<UserAuthenticationState> emit,
-  ) async {
+  ) {
     debugPrint("UserAuthenticationBloc: username: $username");
     emit(state.copyWith(username: username));
     validateForm(emit);
   }
 
   /// MARK: - Password TextField value changed event
-  Future onPasswordChanged(
+  void onPasswordChanged(
     String? password,
     Emitter<UserAuthenticationState> emit,
-  ) async {
+  ) {
     debugPrint("UserAuthenticationBloc: password: $password");
     emit(state.copyWith(password: password));
     validateForm(emit);
   }
 
   /// MARK: - Show/hide password from TextField event
-  Future togglePassword(
+  void togglePassword(
     bool? isObscurePassword,
     Emitter<UserAuthenticationState> emit,
-  ) async {
+  ) {
     emit(state.copyWith(isObscurePassword: isObscurePassword));
   }
 
