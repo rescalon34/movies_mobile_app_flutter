@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:movies_mobile_app_flutter/core/extension/app_core_extensions.dart';
 import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/data/util/string_extensions.dart';
 
@@ -116,9 +117,18 @@ class _ProfilePageState extends State<ProfilePage> {
           text: "Log out",
           showArrowIcon: false,
           onItemClick: () {
-            // TODO: Simulating a logout for now.
-            sharedPref.setBoolean(SharedPrefHelper.isUserLoggedIn, false);
-            context.navigator.navigateTo(LoginPageRoute());
+            context.showCustomAdaptiveDialog(
+              title: "Confirm Logout",
+              description: "Are you sure you want to log out? You will need to log in again to access your account.",
+              cancelButtonText: "Cancel",
+              positiveButtonText: "Ok",
+              positiveAction: () {
+                Navigator.pop(context); // Dismiss dialog.
+                // TODO: Simulating a logout for now.
+                sharedPref.setBoolean(SharedPrefHelper.isUserLoggedIn, false);
+                context.navigator.navigateTo(LoginPageRoute());
+              },
+            );
           },
         ),
       ],
