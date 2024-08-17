@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/routes/home_routes.dart';
-import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/routes/home/home_routes.dart';
+import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/elevated_large_button.dart';
 
 import '../../components/custom_appbar.dart';

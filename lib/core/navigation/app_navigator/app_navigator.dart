@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-import '../base_go_route_data.dart';
+import '../../util/base_go_route_data.dart';
 
 /// Abstract class for navigating between pages in the application.
 ///
@@ -19,6 +19,10 @@ abstract class AppNavigator {
   /// context.navigator.pushPage(MovieDetailsPageRoute(movieId: '123', $extra: args()));
   /// ```
   void pushPage<T extends BaseGoRouteData>(T routeData);
+
+  String redirectTo<T extends BaseGoRouteData>(T routeData);
+
+  void navigateTo<T extends BaseGoRouteData>(T routeData);
 }
 
 class AppNavigatorImpl implements AppNavigator {
@@ -29,5 +33,15 @@ class AppNavigatorImpl implements AppNavigator {
   @override
   void pushPage<T extends BaseGoRouteData>(T routeData) {
     context.push(routeData.location, extra: routeData);
+  }
+
+  @override
+  String redirectTo<T extends BaseGoRouteData>(T routeData) {
+    return routeData.location;
+  }
+
+  @override
+  void navigateTo<T extends BaseGoRouteData>(T routeData) {
+    context.go(routeData.location);
   }
 }

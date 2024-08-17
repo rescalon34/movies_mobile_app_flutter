@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_event.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';
@@ -8,8 +8,8 @@ import 'package:movies_mobile_app_flutter/presentation/components/custom_appbar.
 import 'package:movies_mobile_app_flutter/presentation/components/error_message_view.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
-import '../../../core/di/service_locator.dart';
-import '../../../core/navigation/routes/home_routes.dart';
+import '../../../core/di/di_main_module.dart';
+import '../../../core/navigation/routes/home/home_routes.dart';
 import '../../../domain/model/movie.dart';
 import '../../components/generic_icon.dart';
 import '../../components/movie_item.dart';
@@ -20,7 +20,7 @@ class WatchlistPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WatchlistBloc>(
-      create: (context) => sl()..add(const GetWatchlist()),
+      create: (context) => getIt()..add(const GetWatchlist()),
       child: Scaffold(
         appBar: _buildWatchlistAppBar(context),
         body: BlocBuilder<WatchlistBloc, WatchlistState>(

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movies_mobile_app_flutter/core/navigation/routes/download_routes.dart';
+import 'package:movies_mobile_app_flutter/core/navigation/routes/download/download_routes.dart';
 
 import '../app_route_paths.dart';
 
