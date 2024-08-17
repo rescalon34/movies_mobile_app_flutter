@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ElevatedLargeButton extends StatelessWidget {
   final String text;
-  final VoidCallback onClick;
+  final VoidCallback? onClick;
 
   const ElevatedLargeButton({
     super.key,

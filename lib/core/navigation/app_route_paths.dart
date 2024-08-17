@@ -18,6 +18,7 @@ class AppRoutePaths {
 
   // Generic Page Path
   static const genericPagePath = "/generic-page";
+  static const splashPagePath = "/splash-page";
 
   // Login
   static const loginPagePath = "/login";

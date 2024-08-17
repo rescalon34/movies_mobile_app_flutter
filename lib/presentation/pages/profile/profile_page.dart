@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/data/util/string_extensions.dart';
 
+import '../../../core/di/di_main_module.dart';
 import '../../../core/navigation/routes/general_routes/general_routes.dart';
+import '../../../core/navigation/routes/login/authentication_routes.dart';
 import '../../../core/navigation/routes/profile/profile_routes.dart';
+import '../../../core/util/shared_pref_helper.dart';
 import '../../../data/util/network_constants.dart';
-import '../../bloc/user_authentication/user_authentication_bloc.dart';
 import '../../components/circle_gradient_avatar.dart';
 import '../../components/custom_appbar.dart';
 import '../../components/horizontal_list_item.dart';
 import '../../components/rounded_button.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  @override
   Widget build(BuildContext context) {
+    final SharedPrefHelper sharedPref = getIt<SharedPrefHelper>();
+
     return Scaffold(
       appBar: const CustomAppBar(
         title: "Profile",
@@ -27,9 +35,12 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Gap(16),
-            _buildProfileHeader(),
+            _buildProfileHeader(sharedPref),
             const Gap(24),
-            _buildProfileOptions(context),
+            _buildProfileOptions(
+              context,
+              sharedPref,
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Text(
@@ -43,7 +54,9 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileHeader() {
+  Widget _buildProfileHeader(
+    SharedPrefHelper sharedPref,
+  ) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -55,16 +68,23 @@ class ProfilePage extends StatelessWidget {
             imageSize: 45,
           ),
           const Gap(8),
+          Text("${sharedPref.getString(SharedPrefHelper.userNameKey)}"),
+          const Gap(8),
           RoundedButton(
             text: "Edit Profile",
-            onPressed: () {},
+            onPressed: () {
+              sharedPref.setString(SharedPrefHelper.userNameKey, "rescalon34");
+            },
           ),
         ],
       ),
     );
   }
 
-  Widget _buildProfileOptions(BuildContext context) {
+  Widget _buildProfileOptions(
+    BuildContext context,
+    SharedPrefHelper sharedPref,
+  ) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -95,8 +115,11 @@ class ProfilePage extends StatelessWidget {
         HorizontalListItem(
           text: "Log out",
           showArrowIcon: false,
-          onItemClick: () =>
-              context.read<UserAuthenticationBloc>().add(const LoggedOut()),
+          onItemClick: () {
+            // TODO: Simulating a logout for now.
+            sharedPref.setBoolean(SharedPrefHelper.isUserLoggedIn, false);
+            context.navigator.navigateTo(LoginPageRoute());
+          },
         ),
       ],
     );

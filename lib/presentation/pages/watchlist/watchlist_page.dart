@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_bloc.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_event.dart';
 import 'package:movies_mobile_app_flutter/presentation/bloc/watchlist/watchlist_state.dart';

@@ -28,26 +28,25 @@ class MainRoutes {
 
   GoRouter get mainGoRouter {
     return GoRouter(
-        initialLocation: AppRoutePaths.homePagePath,
-        navigatorKey: _rootNavigatorKey,
-        routes: [
-          StatefulShellRoute.indexedStack(
-            builder: (context, state, navigationShell) {
-              // Return the main scaffold container page.
-              return MainScaffoldWithNavBar(navigationShell: navigationShell);
-            },
-            branches: [
-              getHomeBranch(),
-              getSearchBranch(),
-              getWatchlistBranch(),
-              getDownloadBranch(),
-              getProfileBranch()
-            ],
-          ),
-          ...getAllRoutes(),
-        ],
-        refreshListenable: _streamToListenable.addStream([_authBloc.stream]),
-        redirect: _authRedirector.authRedirectorHandler);
+      initialLocation: AppRoutePaths.splashPagePath,
+      navigatorKey: _rootNavigatorKey,
+      routes: [
+        ...getAllRoutes(),
+        StatefulShellRoute.indexedStack(
+          builder: (context, state, navigationShell) {
+            // Return the main scaffold container page.
+            return MainScaffoldWithNavBar(navigationShell: navigationShell);
+          },
+          branches: [
+            getHomeBranch(),
+            getSearchBranch(),
+            getWatchlistBranch(),
+            getDownloadBranch(),
+            getProfileBranch()
+          ],
+        ),
+      ],
+    );
   }
 
   /// Add here all route list which don't belong to a specific branch.

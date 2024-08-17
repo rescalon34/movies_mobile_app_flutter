@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies_mobile_app_flutter/core/extension/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/core/navigation/routes/profile/profile_routes.dart';
-import 'package:movies_mobile_app_flutter/core/util/navigation_extensions.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
 
 import '../../components/custom_appbar.dart';
@@ -41,7 +41,8 @@ class MovieDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.all(32),
                 child: ElevatedLargeButton(
                   text: "Go to settings",
-                  onClick: () => context.navigator.pushPage(SettingsBPageRoute()),
+                  onClick: () =>
+                      context.navigator.pushPage(SettingsBPageRoute()),
                 ),
               )
             ],
