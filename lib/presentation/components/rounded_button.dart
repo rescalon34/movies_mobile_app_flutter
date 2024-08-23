@@ -13,11 +13,12 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(
-          fontSize: 16,
-        ),
-        backgroundColor: Theme.of(context).colorScheme.secondaryFixed,
-        foregroundColor: Theme.of(context).colorScheme.onSecondaryFixed);
+      textStyle: const TextStyle(
+        fontSize: 16,
+      ),
+      backgroundColor: Theme.of(context).colorScheme.secondaryFixed,
+      foregroundColor: Theme.of(context).colorScheme.onSecondaryFixed,
+    );
 
     return SizedBox(
       child: ElevatedButton(
