@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../components/coming_soon_view.dart';
 import '../../components/custom_appbar.dart';
 
 class DownloadPage extends StatelessWidget {
@@ -11,9 +12,7 @@ class DownloadPage extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Download",
       ),
-      body: Center(
-        child: Text("Download"),
-      ),
+      body: ComingSoonView(),
     );
   }
 }

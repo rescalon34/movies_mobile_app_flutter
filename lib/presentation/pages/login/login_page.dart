@@ -26,7 +26,7 @@ class LoginPage extends StatelessWidget {
         listener: (context, state) {
           // navigate to Home page after login state changes from bloc provider.
           if (state.isAuthenticated) {
-            sharedPref.setString(SharedPrefHelper.userNameKey, "Robert!");
+            sharedPref.setString(SharedPrefHelper.userNameKey, state.username ?? "Rob!");
             sharedPref.setBoolean(SharedPrefHelper.isUserLoggedIn, true);
             context.navigator.navigateTo(HomePageRoute());
           }

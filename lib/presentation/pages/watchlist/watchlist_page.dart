@@ -17,6 +17,7 @@ import '../../components/movie_item.dart';
 class WatchlistPage extends StatelessWidget {
   const WatchlistPage({super.key});
 
+  /// MARK: - Main build widget
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WatchlistBloc>(
@@ -39,6 +40,7 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
+  /// MARK: - AppBar
   CustomAppBar _buildWatchlistAppBar(BuildContext context) {
     return CustomAppBar(
       title: "Watchlist",
@@ -69,7 +71,7 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
-  /// Watchlist body content
+  /// MARK: - Watchlist body content
   Widget _buildWatchlistBody(
     BuildContext context,
     WatchlistState state,
@@ -91,7 +93,7 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
-  /// Movies Stories content
+  /// MARK: - Movies Stories content
   Widget _buildMoviesStoriesSection(
     BuildContext context,
     List<Movie> movies,
@@ -114,14 +116,20 @@ class WatchlistPage extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(top: 4.0, left: 6, right: 6),
-                child: CircleAvatar(
-                  radius: 40,
-                  child: ClipOval(
-                    child: Image.network(
-                      movies[index].imageUrl ?? "",
-                      fit: BoxFit.cover,
-                      width: 80,
-                      height: 80,
+                child: GestureDetector(
+                  onTap: () => _onNavigateToDetails(
+                    context,
+                    movies[index],
+                  ),
+                  child: CircleAvatar(
+                    radius: 40,
+                    child: ClipOval(
+                      child: Image.network(
+                        movies[index].imageUrl ?? "",
+                        fit: BoxFit.cover,
+                        width: 80,
+                        height: 80,
+                      ),
                     ),
                   ),
                 ),
@@ -133,7 +141,7 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
-  /// Watchlist content
+  /// MARK: - Watchlist content
   Widget _buildWatchlistSection(BuildContext context, List<Movie> movies) {
     return Padding(
       padding: const EdgeInsets.only(left: 8, right: 8),
@@ -172,13 +180,13 @@ class WatchlistPage extends StatelessWidget {
     );
   }
 
+  /// MARK: - View functions
   void _onNavigateToDetails(BuildContext context, Movie movie) {
     context.navigator.pushPage(
       MovieDetailsPageRoute(
         releaseDate: "July 22",
         $extra: MovieDetailsArgs(
           movie: movie,
-          movie2: movie,
         ),
       ),
     );

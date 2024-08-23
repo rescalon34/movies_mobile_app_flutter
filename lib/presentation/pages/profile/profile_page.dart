@@ -55,9 +55,8 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  Widget _buildProfileHeader(
-    SharedPrefHelper sharedPref,
-  ) {
+  /// MARK: - Profile header
+  Widget _buildProfileHeader(SharedPrefHelper sharedPref) {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -74,7 +73,10 @@ class _ProfilePageState extends State<ProfilePage> {
           RoundedButton(
             text: "Edit Profile",
             onPressed: () {
-              sharedPref.setString(SharedPrefHelper.userNameKey, "rescalon34");
+              setState(() {
+                sharedPref.setString(
+                    SharedPrefHelper.userNameKey, "rescalon34");
+              });
             },
           ),
         ],
@@ -82,6 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  /// MARK: - Profile list options
   Widget _buildProfileOptions(
     BuildContext context,
     SharedPrefHelper sharedPref,
@@ -119,7 +122,8 @@ class _ProfilePageState extends State<ProfilePage> {
           onItemClick: () {
             context.showCustomAdaptiveDialog(
               title: "Confirm Logout",
-              description: "Are you sure you want to log out? You will need to log in again to access your account.",
+              description:
+                  "Are you sure you want to log out? You will need to log in again to access your account.",
               cancelButtonText: "Cancel",
               positiveButtonText: "Ok",
               positiveAction: () {
