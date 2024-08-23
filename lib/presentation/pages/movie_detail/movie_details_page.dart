@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:movies_mobile_app_flutter/core/extension/app_core_extensions.dart';
 import 'package:movies_mobile_app_flutter/domain/model/movie.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/elevated_large_button.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
@@ -43,16 +44,12 @@ class MovieDetailsPage extends StatelessWidget {
         GenericIcon(
           icon: Icons.cast,
           color: Colors.white,
-          onTapIcon: () {
-            debugPrint("tapping on cast icon");
-          },
+          onTapIcon: () => showDialogAlert(context),
         ),
         GenericIcon(
           icon: Icons.adaptive.share,
           color: Colors.white,
-          onTapIcon: () {
-            debugPrint("tapping on share icon");
-          },
+          onTapIcon: () => showDialogAlert(context),
         ),
       ],
     );
@@ -96,7 +93,7 @@ class MovieDetailsPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 12, right: 12),
           child: ElevatedLargeButton(
-            onClick: () => {},
+            onClick: () => showDialogAlert(context),
             text: "Play".toUpperCase(),
             leadingIcon: Icons.play_arrow_rounded,
             style: _getPlayButtonStyle(context),
@@ -123,5 +120,16 @@ class MovieDetailsPage extends StatelessWidget {
             Radius.circular(8),
           ),
         ));
+  }
+
+  /// MARK: - Generic dialog alert
+  void showDialogAlert(BuildContext context) {
+    context.showCustomAdaptiveDialog(
+      title: "Coming Soon",
+      description:
+          "This feature is under construction, it will be available soon!",
+      positiveButtonText: "Ok",
+      positiveAction: () => Navigator.pop(context),
+    );
   }
 }

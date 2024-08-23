@@ -25,7 +25,8 @@ class AdaptiveAlertDialog extends StatelessWidget {
       actions: [
         if (cancelButtonText?.isNotEmpty == true)
           TextButton(
-            onPressed: cancelAction ?? () => Navigator.pop(context), // dismiss dialog.
+            onPressed: cancelAction ?? () => Navigator.pop(context),
+            // dismiss dialog.
             child: Text(cancelButtonText ?? "Cancel"),
           ),
         TextButton(

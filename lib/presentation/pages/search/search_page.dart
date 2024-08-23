@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../components/coming_soon_view.dart';
 import '../../components/custom_appbar.dart';
 
 class SearchPage extends StatelessWidget {
@@ -11,9 +12,7 @@ class SearchPage extends StatelessWidget {
       appBar: CustomAppBar(
         title: "Search",
       ),
-      body: Center(
-        child: Text("Search"),
-      ),
+      body: ComingSoonView(),
     );
   }
 }
