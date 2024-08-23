@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:movies_mobile_app_flutter/core/extension/app_core_extensions.dart';
+import 'package:movies_mobile_app_flutter/core/extension/date_util_extensions.dart';
 import 'package:movies_mobile_app_flutter/domain/model/movie.dart';
 import 'package:movies_mobile_app_flutter/presentation/components/elevated_large_button.dart';
 import 'package:movies_mobile_app_flutter/presentation/pages/movie_detail/movie_details_args.dart';
@@ -86,7 +87,7 @@ class MovieDetailsPage extends StatelessWidget {
       children: [
         const Gap(4),
         Text(
-          movie.releaseDate ?? "",
+          movie.releaseDate?.parseDateToMonthYear(),
           style: Theme.of(context).textTheme.labelSmall,
         ),
         const Gap(4),
