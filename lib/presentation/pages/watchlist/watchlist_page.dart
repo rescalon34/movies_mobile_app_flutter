@@ -178,7 +178,6 @@ class WatchlistPage extends StatelessWidget {
         releaseDate: "July 22",
         $extra: MovieDetailsArgs(
           movie: movie,
-          movie2: movie,
         ),
       ),
     );
